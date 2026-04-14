@@ -1,0 +1,280 @@
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #e0e0e0;
+  overflow: hidden;
+}
+
+/* ── Machine Shell ── */
+.machine {
+  width: 420px;
+  max-width: 95vw;
+  background: linear-gradient(180deg, #1a1a2e, #16213e);
+  border: 3px solid #00d4ff;
+  border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow:
+    0 0 40px rgba(0, 212, 255, 0.3),
+    inset 0 0 60px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+/* ── Header ── */
+.machine-header h1 {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  color: #00d4ff;
+  text-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* ── Balance Bar ── */
+.balance-bar {
+  margin: 18px 0 14px;
+  padding: 10px;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.balance-label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.balance-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00ff88;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+  transition: transform 0.2s;
+}
+
+.balance-value.pop {
+  transform: scale(1.3);
+}
+
+/* ── Reels ── */
+.reels-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.reel-window {
+  width: 100px;
+  height: 100px;
+  background: #0d0d1a;
+  border: 2px solid #00d4ff;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.reel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.1s;
+}
+
+.symbol {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+/* ── Message ── */
+.message {
+  min-height: 44px;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.message.win {
+  color: #00ff88;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  animation: pulse 0.6s ease-in-out 3;
+}
+
+.message.lose {
+  color: #ff5555;
+}
+
+.message.broke {
+  color: #ff3333;
+  font-weight: 700;
+  animation: shake 0.4s ease-in-out 2;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* ── Controls ── */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.bet-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bet-display {
+  font-size: 1rem;
+  min-width: 110px;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn-small {
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  background: #2a2a4a;
+  color: #00d4ff;
+  border: 1px solid #00d4ff;
+}
+
+.btn-small:hover {
+  background: #3a3a5a;
+}
+
+.btn-spin {
+  width: 100%;
+  max-width: 300px;
+  padding: 14px 24px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  background: linear-gradient(135deg, #6c3ce0, #00b4d8);
+  box-shadow: 0 0 20px rgba(108, 60, 224, 0.4);
+}
+
+.btn-spin:hover {
+  box-shadow: 0 0 30px rgba(108, 60, 224, 0.6);
+}
+
+.btn-spin:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Paytable ── */
+.paytable {
+  margin-top: 20px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.paytable h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.paytable-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pay-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.pay-row:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ── Footer ── */
+.machine-footer {
+  margin-top: 18px;
+  font-size: 0.7rem;
+  color: #555;
+}
+
+/* ── Spin Animation ── */
+.reel.spinning .symbol {
+  animation: blur-spin 0.12s linear infinite;
+}
+
+@keyframes blur-spin {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-20px); opacity: 0.3; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.reel.landing {
+  animation: bounce-land 0.3s ease-out;
+}
+
+@keyframes bounce-land {
+  0% { transform: translateY(-10px); }
+  60% { transform: translateY(4px); }
+  100% { transform: translateY(0); }
+}

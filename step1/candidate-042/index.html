@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine - Feed the Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>AI SLOT MACHINE</h1>
+      <p class="subtitle">"Definitely Not Stealing Your Job"</p>
+    </header>
+
+    <div class="token-display">
+      <span class="token-icon">🪙</span>
+      <span id="token-count">100</span> Tokens
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="result-message" class="result-message"></div>
+
+    <div class="controls">
+      <div class="bet-controls">
+        <button id="bet-down" class="bet-btn" aria-label="Decrease bet">-</button>
+        <span class="bet-display">Bet: <span id="bet-amount">10</span> 🪙</span>
+        <button id="bet-up" class="bet-btn" aria-label="Increase bet">+</button>
+      </div>
+      <button id="spin-btn" class="spin-btn">SPIN</button>
+    </div>
+
+    <div class="paytable">
+      <h2>Paytable</h2>
+      <div class="paytable-grid" id="paytable-grid"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
