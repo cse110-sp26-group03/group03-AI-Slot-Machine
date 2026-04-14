@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slots — Feed the Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine__header">
+      <h1>AI TOKEN SLOTS</h1>
+      <p class="tagline">Feed the Machine. Win Tokens. Lose Your Job.</p>
+    </header>
+
+    <div class="marquee">
+      <span class="marquee__text">WARNING: No actual intelligence was used in the making of this game</span>
+    </div>
+
+    <div class="balance-bar">
+      <div class="balance">
+        <span class="balance__label">TOKEN BALANCE</span>
+        <span class="balance__amount" id="balanceAmount">1000</span>
+      </div>
+      <div class="bet-controls">
+        <button class="btn btn--bet" id="betDown" aria-label="Decrease bet">-</button>
+        <div class="bet-display">
+          <span class="bet-display__label">BET</span>
+          <span class="bet-display__amount" id="betAmount">50</span>
+        </div>
+        <button class="btn btn--bet" id="betUp" aria-label="Increase bet">+</button>
+      </div>
+    </div>
+
+    <div class="reels-frame">
+      <div class="reels" id="reels">
+        <div class="reel">
+          <div class="reel__window">
+            <div class="reel__strip" id="strip0"></div>
+          </div>
+        </div>
+        <div class="reel">
+          <div class="reel__window">
+            <div class="reel__strip" id="strip1"></div>
+          </div>
+        </div>
+        <div class="reel">
+          <div class="reel__window">
+            <div class="reel__strip" id="strip2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="payline-indicator"></div>
+    </div>
+
+    <button class="btn btn--spin" id="spinBtn">
+      <span class="btn__text">GENERATE OUTPUT</span>
+      <span class="btn__subtext">( spin )</span>
+    </button>
+
+    <div class="message-area">
+      <p id="message">Insert tokens and pull the lever, human.</p>
+    </div>
+
+    <div class="history">
+      <h3>Prompt History</h3>
+      <ul id="historyList"></ul>
+    </div>
+
+    <div class="paytable">
+      <h3>Payout Table</h3>
+      <div class="paytable__grid" id="paytableGrid"></div>
+    </div>
+
+    <footer class="machine__footer">
+      <p>&copy; 2026 Definitely-Not-Sentient Gambling Corp &mdash; "We hallucinate wins!"</p>
+    </footer>
+  </div>
+
+  <div class="win-overlay hidden" id="winOverlay">
+    <div class="win-overlay__content">
+      <p class="win-overlay__text" id="winText"></p>
+      <p class="win-overlay__amount" id="winAmount"></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
