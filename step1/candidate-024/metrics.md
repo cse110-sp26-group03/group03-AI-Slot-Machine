@@ -6,8 +6,8 @@
 | Timestamp | 2026-04-13 |
 | Model + version string | claude-opus-4-6 |
 | Input tokens | 260 |
-| Output tokens | 91k |
-| Total tokens | 91.3k |
+| Output tokens | 21k |
+| Total tokens | 21.3k |
 | Wall-clock time (s) | 54s |
 | Tool-reported time (s) | SAME |
 | Files produced (count and names) | 3: index.html, styles.css, script.js |
