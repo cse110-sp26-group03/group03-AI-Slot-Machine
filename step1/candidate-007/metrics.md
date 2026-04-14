@@ -15,4 +15,17 @@
 | Runs in browser? | Yes |
 
 
-The app looked alright. The rool animation was a little weird. There was a lack to details as compared to the other results but no major flaws. 
+✓ Good indent and spacing. 
+✗ Comments in code. 
+✓ Concise and explanatory, not excessive. 
+✓ Function-level documentation included. 
+✓ Uses a reasonable number of files/languages. 
+✓ Code was generated in the correct directory. 
+
+✓ App runs in the browser without errors
+✓ Actually produces a slot machine app
+✓ Winning and spending tokens mechanic works
+✓ Incorporates AI theme in a humorous or slightly negative way
+✓ No obvious bugs or interaction issues
+✓ Behaves like a slot machine
+- Visually appealing
