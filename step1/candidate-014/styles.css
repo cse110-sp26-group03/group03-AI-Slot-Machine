@@ -1,0 +1,172 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0118;
+  --panel: #15092b;
+  --accent: #00ffc3;
+  --accent2: #ff0099;
+  --text: #e8e8ff;
+  --dim: #8a7fb8;
+  --warn: #ffcc00;
+}
+
+body {
+  font-family: "Courier New", monospace;
+  background: radial-gradient(ellipse at top, #1a0340 0%, var(--bg) 70%);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.machine {
+  background: var(--panel);
+  border: 3px solid var(--accent);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: 0 0 60px rgba(0, 255, 195, 0.25), inset 0 0 40px rgba(255, 0, 153, 0.08);
+}
+
+header { text-align: center; margin-bottom: 24px; }
+
+h1 {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(0, 255, 195, 0.3);
+}
+
+.tagline { color: var(--dim); font-size: 0.85rem; margin-top: 6px; font-style: italic; }
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 255, 195, 0.2);
+}
+
+.stat { text-align: center; flex: 1; }
+.label { display: block; font-size: 0.7rem; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
+.value { display: block; font-size: 1.3rem; color: var(--accent); font-weight: bold; margin-top: 4px; }
+
+.reels {
+  display: flex;
+  gap: 10px;
+  background: #000;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid var(--accent2);
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 30px rgba(255, 0, 153, 0.3);
+}
+
+.reel {
+  flex: 1;
+  height: 120px;
+  background: linear-gradient(180deg, #1a0340, #0a0118, #1a0340);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(0, 255, 195, 0.3);
+}
+
+.reel::before, .reel::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 20px;
+  z-index: 2;
+  pointer-events: none;
+}
+.reel::before { top: 0; background: linear-gradient(180deg, #000, transparent); }
+.reel::after { bottom: 0; background: linear-gradient(0deg, #000, transparent); }
+
+.strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 4rem;
+  transition: transform 0.1s;
+}
+
+.strip.spinning { animation: blur 0.08s linear infinite; }
+@keyframes blur {
+  0% { transform: translateY(0); filter: blur(2px); }
+  100% { transform: translateY(-40px); filter: blur(2px); }
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  flex: 1;
+  padding: 16px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, var(--accent2), #6600cc);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: transform 0.1s, box-shadow 0.2s;
+  text-transform: uppercase;
+}
+
+#spin { flex: 3; background: linear-gradient(135deg, var(--accent), #0099cc); color: #000; font-size: 1.1rem; }
+#bet-down, #bet-up { flex: 0 0 60px; font-size: 1.5rem; }
+
+button:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0, 255, 195, 0.4); }
+button:active:not(:disabled) { transform: translateY(0); }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.message {
+  text-align: center;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.message.win { border-left-color: var(--accent); color: var(--accent); animation: flash 0.6s ease; }
+.message.lose { border-left-color: var(--accent2); color: var(--accent2); }
+.message.warn { border-left-color: var(--warn); color: var(--warn); }
+
+@keyframes flash {
+  0%, 100% { background: rgba(0, 0, 0, 0.4); }
+  50% { background: rgba(0, 255, 195, 0.2); }
+}
+
+.paytable {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--dim);
+}
+.paytable summary { cursor: pointer; color: var(--accent); font-weight: bold; }
+.paytable ul { margin: 10px 0 10px 18px; }
+.paytable li { padding: 3px 0; }
+.fine { font-size: 0.7rem; font-style: italic; margin-top: 8px; opacity: 0.7; }
