@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #e0e0e0;
+}
+
+.machine {
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  background: linear-gradient(90deg, #00f0ff, #ff00e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+/* Token display */
+.token-display {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.token-label {
+  color: #aaa;
+}
+
+#token-count {
+  color: #facc15;
+}
+
+/* Reels */
+.reels-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.reel-window {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border: 3px solid #555;
+  border-radius: 12px;
+  background: #1a1a2e;
+  position: relative;
+}
+
+.reel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.1s linear;
+}
+
+.symbol {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+/* Spinning glow */
+.reel-window.spinning {
+  border-color: #00f0ff;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
+}
+
+/* Message */
+.message {
+  min-height: 1.6rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+  font-style: italic;
+}
+
+.message.win {
+  color: #4ade80;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.message.lose {
+  color: #f87171;
+  font-style: normal;
+}
+
+.message.broke {
+  color: #f97316;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Bet controls */
+.bet-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 1rem;
+}
+
+.bet-btn {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  background: transparent;
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.bet-btn:hover {
+  border-color: #00f0ff;
+  color: #00f0ff;
+}
+
+.bet-display {
+  font-size: 1.1rem;
+  width: 100px;
+}
+
+#bet-amount {
+  color: #facc15;
+  font-weight: 700;
+}
+
+/* Spin button */
+.spin-btn {
+  width: 100%;
+  max-width: 260px;
+  padding: 14px 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #7c3aed, #db2777);
+  color: #fff;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-bottom: 2rem;
+}
+
+.spin-btn:hover {
+  opacity: 0.9;
+}
+
+.spin-btn:active {
+  transform: scale(0.97);
+}
+
+.spin-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Paytable */
+.paytable {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.paytable h2 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #aaa;
+}
+
+.paytable ul {
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.paytable li {
+  padding: 3px 0;
+}
+
+.paytable li span {
+  display: inline-block;
+  min-width: 100px;
+  text-align: left;
+}
+
+/* History */
+.history {
+  text-align: left;
+  max-height: 200px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.history h2 {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.history ul {
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.history li {
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.history li:last-child {
+  border-bottom: none;
+}
+
+.history li.win-entry {
+  color: #4ade80;
+}
+
+.history li.lose-entry {
+  color: #f87171;
+}

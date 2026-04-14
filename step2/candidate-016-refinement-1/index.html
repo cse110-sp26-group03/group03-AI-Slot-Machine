@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine — Spend Your Tokens!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <h1 class="title">🤖 AI SLOT MACHINE 🤖</h1>
+    <p class="subtitle">Where your tokens go to hallucinate</p>
+
+    <div class="token-display">
+      <span class="token-label">TOKENS</span>
+      <span id="token-count">1000</span>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">🤖</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">🧠</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">💀</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="bet-controls">
+        <button id="bet-down" aria-label="Decrease bet">−</button>
+        <span class="bet-display">BET: <span id="bet-amount">50</span></span>
+        <button id="bet-up" aria-label="Increase bet">+</button>
+      </div>
+      <button id="spin-btn" class="spin-button">SPIN</button>
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <div class="paytable">
+      <h2>Paytable</h2>
+      <div class="paytable-grid">
+        <div class="pay-row"><span>🤖🤖🤖</span> <span>10x — "AI Overlord"</span></div>
+        <div class="pay-row"><span>🧠🧠🧠</span> <span>8x — "Big Brain Energy"</span></div>
+        <div class="pay-row"><span>🔥🔥🔥</span> <span>6x — "GPU Meltdown"</span></div>
+        <div class="pay-row"><span>💀💀💀</span> <span>5x — "Model Collapsed"</span></div>
+        <div class="pay-row"><span>📎📎📎</span> <span>4x — "Clippy's Revenge"</span></div>
+        <div class="pay-row"><span>🌀🌀🌀</span> <span>3x — "Hallucination"</span></div>
+        <div class="pay-row"><span>Any pair</span> <span>1.5x — "Partial Match"</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

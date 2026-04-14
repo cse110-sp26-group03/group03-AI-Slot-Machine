@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TokenBurner 3000 — AI Slot Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-bar">
+      <div class="dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <span class="terminal-title">tokenburner-3000 — inference session</span>
+    </div>
+
+    <div class="terminal-body">
+      <div class="header-line">
+        <pre class="ascii-title">
+╔════════════════════════════════════╗
+║     T O K E N B U R N E R  3000   ║
+║   "Your Tokens. Our Parameters."  ║
+╚════════════════════════════════════╝</pre>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat">
+          <span class="stat-label">BALANCE:</span>
+          <span id="balance" class="stat-value balance-val">1000</span>
+          <span class="stat-unit">tokens</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">COST/SPIN:</span>
+          <span id="cost" class="stat-value cost-val">50</span>
+          <span class="stat-unit">tokens</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">MODEL TEMP:</span>
+          <span id="temperature" class="stat-value temp-val">0.7</span>
+        </div>
+      </div>
+
+      <div class="reels-section">
+        <div class="reel-frame">
+          <div class="reel-label">layer_1</div>
+          <div class="reel-box">
+            <div class="reel" id="reel-0">
+              <div class="reel-symbol">🤖</div>
+            </div>
+          </div>
+        </div>
+        <div class="reel-frame">
+          <div class="reel-label">layer_2</div>
+          <div class="reel-box">
+            <div class="reel" id="reel-1">
+              <div class="reel-symbol">🧠</div>
+            </div>
+          </div>
+        </div>
+        <div class="reel-frame">
+          <div class="reel-label">layer_3</div>
+          <div class="reel-box">
+            <div class="reel" id="reel-2">
+              <div class="reel-symbol">💰</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="bet-section">
+          <button id="bet-down" class="ctrl-btn" aria-label="Decrease bet">[-]</button>
+          <span class="bet-display">wager: <span id="bet-display-val">50</span></span>
+          <button id="bet-up" class="ctrl-btn" aria-label="Increase bet">[+]</button>
+        </div>
+        <button id="spin-btn" class="spin-btn">&gt; model.generate()</button>
+      </div>
+
+      <div class="output-section">
+        <div class="output-label">&gt; stdout:</div>
+        <div id="message" class="output-text">Awaiting inference request...</div>
+      </div>
+
+      <div class="log-section">
+        <div class="log-header">═══ inference_log.txt (last 5) ═══</div>
+        <div id="log-entries" class="log-entries">
+          <div class="log-entry dimmed">[session_start] Loaded 1000 tokens from billing API</div>
+        </div>
+      </div>
+
+      <div class="paytable-section">
+        <div class="paytable-header">═══ PAYOUT_TABLE.md ═══</div>
+        <div class="paytable">
+          <div class="pay-row"><span>🤖🤖🤖</span><span class="pay-name">Singularity</span><span class="pay-mult">12x</span></div>
+          <div class="pay-row"><span>🧠🧠🧠</span><span class="pay-name">AGI Achieved</span><span class="pay-mult">8x</span></div>
+          <div class="pay-row"><span>💰💰💰</span><span class="pay-name">Series B Funding</span><span class="pay-mult">6x</span></div>
+          <div class="pay-row"><span>🔥🔥🔥</span><span class="pay-name">Datacenter Fire</span><span class="pay-mult">5x</span></div>
+          <div class="pay-row"><span>👁️👁️👁️</span><span class="pay-name">Sentience Scare</span><span class="pay-mult">4x</span></div>
+          <div class="pay-row"><span>📉📉📉</span><span class="pay-name">Stock Crash</span><span class="pay-mult">3x</span></div>
+          <div class="pay-row"><span>Any pair</span><span class="pay-name">Partial Inference</span><span class="pay-mult">1.5x</span></div>
+        </div>
+      </div>
+
+      <div class="footer-line">
+        <span class="blink">█</span> tokenburner v3.0.0 | uptime: <span id="uptime">00:00</span> | tokens_wasted: <span id="total-wasted">0</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
