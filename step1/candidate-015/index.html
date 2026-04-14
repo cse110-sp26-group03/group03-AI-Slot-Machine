@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine — Burn Your Tokens!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="marquee">
+      <h1>🤖 AI SLOT MACHINE 🤖</h1>
+      <p class="subtitle">Where Your Tokens Go to Die</p>
+    </header>
+
+    <div class="token-bar">
+      <span class="token-label">TOKEN BALANCE:</span>
+      <span id="balance" class="token-value">1000</span>
+      <span class="token-unit">tokens</span>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel" id="reel-0">
+        <div class="reel-window">
+          <div class="reel-strip" id="strip-0"></div>
+        </div>
+      </div>
+      <div class="reel" id="reel-1">
+        <div class="reel-window">
+          <div class="reel-strip" id="strip-1"></div>
+        </div>
+      </div>
+      <div class="reel" id="reel-2">
+        <div class="reel-window">
+          <div class="reel-strip" id="strip-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bet-controls">
+      <button id="bet-down" class="bet-btn" aria-label="Decrease bet">−</button>
+      <div class="bet-display">
+        <span class="bet-label">BET</span>
+        <span id="bet-amount" class="bet-value">50</span>
+        <span class="bet-label">tokens</span>
+      </div>
+      <button id="bet-up" class="bet-btn" aria-label="Increase bet">+</button>
+    </div>
+
+    <button id="spin-btn" class="spin-button">
+      <span class="spin-text">🎰 SPIN</span>
+    </button>
+
+    <div id="message" class="message"></div>
+
+    <div class="paytable">
+      <h2>Payouts</h2>
+      <div class="paytable-grid">
+        <div class="payout-row"><span>🤖🤖🤖</span><span>10x — "Singularity Jackpot!"</span></div>
+        <div class="payout-row"><span>🧠🧠🧠</span><span>8x — "Neural Network Nirvana"</span></div>
+        <div class="payout-row"><span>🔥🔥🔥</span><span>6x — "GPU Meltdown!"</span></div>
+        <div class="payout-row"><span>💰💰💰</span><span>5x — "VC Funding Secured"</span></div>
+        <div class="payout-row"><span>⚡⚡⚡</span><span>4x — "Overclocked!"</span></div>
+        <div class="payout-row"><span>🎲🎲🎲</span><span>3x — "Deterministic Luck"</span></div>
+        <div class="payout-row"><span>Any pair</span><span>1.5x — "Partial Hallucination"</span></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>⚠️ WARNING: No actual AI was harmed. Tokens are imaginary, just like most AI benchmarks.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

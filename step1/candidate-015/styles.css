@@ -1,0 +1,248 @@
+/* ── Reset & Base ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(ellipse at center, #1a0a2e 0%, #0d0015 100%);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #e0d0ff;
+  overflow-x: hidden;
+}
+
+/* ── Machine Frame ───────────────────────────────── */
+.machine {
+  width: 420px;
+  padding: 28px 24px;
+  background: linear-gradient(145deg, #1e1040, #120828);
+  border: 3px solid #6c3fad;
+  border-radius: 24px;
+  box-shadow:
+    0 0 40px rgba(120, 60, 200, .35),
+    inset 0 0 60px rgba(100, 50, 180, .08);
+  text-align: center;
+}
+
+/* ── Marquee Header ──────────────────────────────── */
+.marquee h1 {
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #ff6af0, #ffcc00, #00e5ff, #ff6af0);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+.subtitle {
+  margin-top: 4px;
+  font-size: .85rem;
+  color: #a080d0;
+  font-style: italic;
+}
+
+/* ── Token Balance Bar ───────────────────────────── */
+.token-bar {
+  margin: 16px 0 20px;
+  padding: 10px 16px;
+  background: #0e0620;
+  border: 1px solid #5a2e99;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.token-label { font-size: .75rem; color: #9070c0; text-transform: uppercase; letter-spacing: 1px; }
+.token-value { font-size: 1.5rem; font-weight: 700; color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, .5); }
+.token-unit  { font-size: .75rem; color: #9070c0; }
+
+.token-value.flash-win {
+  animation: flashWin .5s ease 3;
+}
+.token-value.flash-lose {
+  animation: flashLose .4s ease 2;
+}
+
+@keyframes flashWin {
+  0%, 100% { color: #ffcc00; }
+  50% { color: #00ff88; text-shadow: 0 0 16px #00ff88; }
+}
+@keyframes flashLose {
+  0%, 100% { color: #ffcc00; }
+  50% { color: #ff4466; text-shadow: 0 0 12px #ff4466; }
+}
+
+/* ── Reels ───────────────────────────────────────── */
+.reels-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.reel {
+  width: 100px;
+  height: 100px;
+  background: #0a0418;
+  border: 2px solid #5a2e99;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(0,0,0,.6);
+}
+
+.reel-window {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.reel-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: none;
+}
+
+.reel-strip .symbol {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.reel.winner {
+  animation: glowPulse .6s ease 3;
+  border-color: #ffcc00;
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: inset 0 0 20px rgba(0,0,0,.6), 0 0 8px rgba(255,204,0,.3); }
+  50% { box-shadow: inset 0 0 20px rgba(0,0,0,.6), 0 0 24px rgba(255,204,0,.7); }
+}
+
+/* ── Bet Controls ────────────────────────────────── */
+.bet-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.bet-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #6c3fad;
+  border-radius: 50%;
+  background: #1a0a2e;
+  color: #e0d0ff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+  line-height: 1;
+}
+.bet-btn:hover { background: #2a1050; border-color: #9060e0; }
+.bet-btn:active { background: #3a1870; }
+
+.bet-display {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.bet-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #c9aaff;
+}
+
+/* ── Spin Button ─────────────────────────────────── */
+.spin-button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #8b3fff, #d946ef);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: transform .1s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(140, 60, 255, .4);
+}
+.spin-button:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(140, 60, 255, .55); }
+.spin-button:active { transform: translateY(1px); box-shadow: 0 2px 10px rgba(140, 60, 255, .3); }
+.spin-button:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+/* ── Message Area ────────────────────────────────── */
+.message {
+  min-height: 48px;
+  margin: 16px 0 12px;
+  padding: 8px;
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: opacity .3s;
+}
+.message.win  { color: #00ff88; text-shadow: 0 0 10px rgba(0,255,136,.4); }
+.message.lose { color: #ff6688; }
+.message.info { color: #a080d0; }
+.message.broke { color: #ff4444; font-size: 1.1rem; }
+
+/* ── Paytable ────────────────────────────────────── */
+.paytable {
+  margin-top: 8px;
+  padding: 14px;
+  background: rgba(10, 4, 24, .6);
+  border: 1px solid #3a1870;
+  border-radius: 12px;
+}
+.paytable h2 {
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #9070c0;
+  margin-bottom: 10px;
+}
+.paytable-grid { display: flex; flex-direction: column; gap: 4px; }
+.payout-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .8rem;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+.payout-row:nth-child(odd) { background: rgba(100, 50, 180, .08); }
+
+/* ── Footer ──────────────────────────────────────── */
+.footer {
+  margin-top: 16px;
+  font-size: .7rem;
+  color: #6a5090;
+  line-height: 1.4;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 460px) {
+  .machine { width: 95vw; padding: 20px 14px; }
+  .reel { width: 80px; height: 80px; }
+  .reel-strip .symbol { width: 80px; height: 80px; font-size: 2.4rem; }
+}

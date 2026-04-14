@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine - Token Burner 3000</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>TOKEN BURNER 3000</h1>
+      <p class="subtitle">Where Your Tokens Go to Die</p>
+    </header>
+
+    <div class="token-display">
+      <span class="token-label">TOKENS</span>
+      <span class="token-count" id="tokenCount">1000</span>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel0">
+          <div class="symbol">🤖</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel1">
+          <div class="symbol">🧠</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel2">
+          <div class="symbol">💀</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-area" id="messageArea">
+      <p>Feed me your tokens, human.</p>
+    </div>
+
+    <div class="controls">
+      <div class="bet-controls">
+        <button class="bet-btn" id="betDown" aria-label="Decrease bet">−</button>
+        <div class="bet-display">
+          <span class="bet-label">BET</span>
+          <span class="bet-amount" id="betAmount">10</span>
+        </div>
+        <button class="bet-btn" id="betUp" aria-label="Increase bet">+</button>
+      </div>
+      <button class="spin-btn" id="spinBtn">SPIN</button>
+    </div>
+
+    <div class="paytable">
+      <h2>PAYOUTS</h2>
+      <div class="paytable-grid">
+        <div class="payout-row"><span>🤖🤖🤖</span><span>Singularity! 20x</span></div>
+        <div class="payout-row"><span>🧠🧠🧠</span><span>AGI Achieved! 15x</span></div>
+        <div class="payout-row"><span>🔥🔥🔥</span><span>GPU Meltdown! 10x</span></div>
+        <div class="payout-row"><span>💀💀💀</span><span>Model Collapse! 8x</span></div>
+        <div class="payout-row"><span>📊📊📊</span><span>Benchmark Hacked! 5x</span></div>
+        <div class="payout-row"><span>💸💸💸</span><span>VC Funded! 3x</span></div>
+        <div class="payout-row"><span>Any pair</span><span>1.5x</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
