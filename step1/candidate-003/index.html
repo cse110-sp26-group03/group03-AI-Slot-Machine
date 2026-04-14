@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TokenSlots 3000 — Hallucinate to Win!</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🎰 TokenSlots 3000 <span class="beta">beta (forever)</span></h1>
+      <p class="tagline">Burn compute. Summon stochastic fortune. Probably hallucinate a jackpot.</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="label">Token Balance</span>
+        <span id="balance" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Bet / Spin</span>
+        <div class="bet-controls">
+          <button id="betDown" aria-label="decrease bet">−</button>
+          <span id="bet" class="value">10</span>
+          <button id="betUp" aria-label="increase bet">+</button>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="label">Context Window</span>
+        <div class="context-bar"><div id="contextFill"></div></div>
+      </div>
+    </section>
+
+    <main class="machine">
+      <div class="reels" id="reels">
+        <div class="reel" data-reel="0"><div class="strip"></div></div>
+        <div class="reel" data-reel="1"><div class="strip"></div></div>
+        <div class="reel" data-reel="2"><div class="strip"></div></div>
+      </div>
+      <div class="payline"></div>
+
+      <button id="spin" class="spin-btn">SPIN (prompt the oracle)</button>
+      <button id="maxBet" class="max-btn">YOLO ALL TOKENS</button>
+    </main>
+
+    <section class="log">
+      <h2>📝 Prompt Log</h2>
+      <ul id="log"></ul>
+    </section>
+
+    <section class="paytable">
+      <h2>💰 Payouts</h2>
+      <ul>
+        <li><span>🧠🧠🧠</span> AGI achieved — <strong>100×</strong></li>
+        <li><span>🤖🤖🤖</span> Model collapse averted — <strong>50×</strong></li>
+        <li><span>💾💾💾</span> Training data (pirated) — <strong>25×</strong></li>
+        <li><span>📎📎📎</span> Paperclip maximizer — <strong>15×</strong></li>
+        <li><span>🔥🔥🔥</span> GPU go brrr — <strong>10×</strong></li>
+        <li><span>💸💸💸</span> Series G funding — <strong>8×</strong></li>
+        <li><span>🍌🍌🍌</span> Hallucinated banana — <strong>5×</strong></li>
+        <li><span>Any pair</span> Partial credit (like your PhD) — <strong>2×</strong></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>No GPUs were harmed. Some ethics were. Not financial advice, but also kind of is?</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
