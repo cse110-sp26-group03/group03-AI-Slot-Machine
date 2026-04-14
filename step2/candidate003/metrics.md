@@ -15,6 +15,6 @@
 | Runs in browser? | |
 
 ## App Quality Notes
-Looks good in UI wise, and the sounds are good. Good logs, no obvious errors
+Looks good in UI wise, and the sounds are good. Good logs, no obvious errors. No all in, capped at 500 bet.
 ## Code Quality Notes
-All in one file so a little hard to read, but there a decent amount of comments
+All in one file so a little hard to read, but there a decent amount of comments.
