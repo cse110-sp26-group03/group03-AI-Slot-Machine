@@ -28,4 +28,4 @@
 ✓ Incorporates AI theme in a humorous or slightly negative way
 ✓ No obvious bugs or interaction issues
 ✓ Behaves like a slot machine
-- Visually appealing
+✗ Visually appealing
