@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tokenomicon — The AI Slot Machine</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>🎰 Tokenomicon</h1>
+    <p class="tagline">Where your tokens go to hallucinate.</p>
+  </header>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="label">Token Balance</span>
+      <span id="balance" class="value">1000</span>
+    </div>
+    <div class="stat">
+      <span class="label">Tokens Burned</span>
+      <span id="burned" class="value">0</span>
+    </div>
+    <div class="stat">
+      <span class="label">Context Window</span>
+      <div class="bar"><div id="context" class="fill"></div></div>
+    </div>
+  </div>
+
+  <div class="machine">
+    <div class="reels">
+      <div class="reel" id="reel0"><div class="strip"></div></div>
+      <div class="reel" id="reel1"><div class="strip"></div></div>
+      <div class="reel" id="reel2"><div class="strip"></div></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <label>Bet: <input type="number" id="bet" value="50" min="10" step="10"></label>
+    <button id="spin">SPIN (burn tokens)</button>
+    <button id="beg">Beg OpenAI for more tokens</button>
+  </div>
+
+  <div id="log" class="log"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Token Slots — Burn Compute, Win Nothing</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header>
+      <h1>🤖 AI TOKEN SLOTS 🎰</h1>
+      <p class="tagline">Where your tokens go to hallucinate</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><span class="label">Tokens</span><span id="balance">1000</span></div>
+      <div class="stat"><span class="label">Context Used</span><span id="context">0%</span></div>
+      <div class="stat"><span class="label">Bet</span><span id="bet">50</span></div>
+    </div>
+
+    <div class="reels">
+      <div class="reel" id="reel0"><div class="strip"></div></div>
+      <div class="reel" id="reel1"><div class="strip"></div></div>
+      <div class="reel" id="reel2"><div class="strip"></div></div>
+    </div>
+
+    <div class="controls">
+      <button id="betDown">−</button>
+      <button id="spin">SPIN (burn tokens)</button>
+      <button id="betUp">+</button>
+    </div>
+
+    <div class="message" id="message">Press SPIN to start prompting the void.</div>
+
+    <footer>
+      <p>⚠️ This model may hallucinate wins. No refunds on wasted compute.</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

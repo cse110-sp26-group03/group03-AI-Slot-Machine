@@ -2,14 +2,16 @@
 
 | Field | Value |
 |-------|-------|
-| Run ID | |
-| Timestamp | |
-| Model + version string | |
-| Input tokens | |
-| Output tokens | |
-| Total tokens | |
-| Wall-clock time (s) | |
-| Tool-reported time (s) | |
-| Files produced (count and names) | |
-| Lines of code | |
-| Runs in browser? | |
+| Run ID | candidate-019 |
+| Timestamp | 2026-04-13 |
+| Model + version string | claude-opus-4-6 |
+| Input tokens | 46 |
+| Output tokens | 11.8k |
+| Total tokens | 11.9k |
+| Wall-clock time (s) | 1m 33s |
+| Tool-reported time (s) | SAME |
+| Files produced (count and names) | 3 — index.html, styles.css, script.js |
+| Lines of code | 644 (index.html: 65, styles.css: 329, script.js: 250) |
+| Runs in browser? | Yes works good, looks visually good, mocks AI,  code was not commented on but was perfectly spaced/indented. best one |
+
+
