@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOKEN//GAMBLE :: AI Slot Terminal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- ============================================================ -->
+<!--  CRT SCANLINE + FLICKER OVERLAYS                             -->
+<!-- ============================================================ -->
+<div class="crt-scanlines"></div>
+<div class="crt-flicker"></div>
+<div class="crt-glow"></div>
+
+<main class="terminal">
+
+  <!-- ============================================================ -->
+  <!--  ASCII ART HEADER                                            -->
+  <!-- ============================================================ -->
+  <header class="ascii-header">
+<pre class="ascii-title">
+ _____ ___  _  _______ _   _     ____    _    __  __ ____  _     _____
+|_   _/ _ \| |/ / ____| \ | |   / ___|  / \  |  \/  | __ )| |   | ____|
+  | || | | | ' /|  _| |  \| |  | |  _  / _ \ | |\/| |  _ \| |   |  _|
+  | || |_| | . \| |___| |\  |  | |_| |/ ___ \| |  | | |_) | |___| |___
+  |_| \___/|_|\_\_____|_| \_|   \____/_/   \_\_|  |_|____/|_____|_____|
+</pre>
+    <p class="tagline">&gt; v0.4.2-beta :: neural_jackpot_engine :: burn your tokens for enlightenment_</p>
+  </header>
+
+  <!-- ============================================================ -->
+  <!--  TOP STATUS BAR                                              -->
+  <!-- ============================================================ -->
+  <section class="status-bar">
+    <div class="status-cell">
+      <span class="label">$ balance</span>
+      <span class="value" id="balance-display">1000</span>
+    </div>
+    <div class="status-cell">
+      <span class="label">$ bet</span>
+      <span class="value" id="bet-display">10</span>
+    </div>
+    <div class="status-cell temperature-cell">
+      <span class="label">$ temperature</span>
+      <div class="temperature-bar" id="temperature-bar"></div>
+    </div>
+    <div class="status-cell">
+      <button id="mute-toggle" class="mini-btn">[ sound: ON ]</button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  SLOT REELS                                                  -->
+  <!-- ============================================================ -->
+  <section class="slot-machine">
+    <div class="reel-frame">
+      <div class="reel" id="reel-0"><div class="reel-strip"></div></div>
+      <div class="reel" id="reel-1"><div class="reel-strip"></div></div>
+      <div class="reel" id="reel-2"><div class="reel-strip"></div></div>
+      <div class="payline"></div>
+    </div>
+    <div class="result-message" id="result-message">&gt; awaiting_input...</div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  BET CONTROLS                                                -->
+  <!-- ============================================================ -->
+  <section class="bet-controls">
+    <div class="bet-label">&gt; set_bet():</div>
+    <div class="bet-buttons">
+      <button class="bet-preset" data-bet="10">10</button>
+      <button class="bet-preset" data-bet="25">25</button>
+      <button class="bet-preset" data-bet="50">50</button>
+      <button class="bet-preset" data-bet="100">100</button>
+      <button class="bet-preset" data-bet="250">250</button>
+      <button class="bet-preset" data-bet="500">500</button>
+      <button id="all-in-btn" class="bet-preset all-in">ALL_IN()</button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  MAIN ACTION BUTTONS                                         -->
+  <!-- ============================================================ -->
+  <section class="actions">
+    <button id="spin-btn" class="cmd-btn primary">model.generate()</button>
+    <button id="paytable-btn" class="cmd-btn">paytable.show()</button>
+  </section>
+
+  <!-- ============================================================ -->
+  <!--  STATS + HISTORY PANEL                                       -->
+  <!-- ============================================================ -->
+  <section class="info-panels">
+
+    <div class="panel">
+      <h3>&gt; session.stats</h3>
+      <ul class="stats-list">
+        <li><span>total_spins</span><span id="stat-spins">0</span></li>
+        <li><span>win_rate</span><span id="stat-winrate">0%</span></li>
+        <li><span>peak_balance</span><span id="stat-peak">1000</span></li>
+        <li><span>total_wagered</span><span id="stat-wagered">0</span></li>
+        <li><span>biggest_hit</span><span id="stat-biggest">0</span></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>&gt; spin.history[-10:]</h3>
+      <ul class="history-list" id="history-list">
+        <li class="empty">// no spins logged</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <footer class="terminal-footer">
+    <p>&gt; powered by gradient_descent &amp; human_suffering | EULA: you have no rights</p>
+  </footer>
+</main>
+
+<!-- ============================================================ -->
+<!--  PAYTABLE MODAL                                              -->
+<!-- ============================================================ -->
+<div id="paytable-modal" class="modal hidden">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <h2>&gt; paytable.json</h2>
+      <button id="paytable-close" class="mini-btn">[ X ]</button>
+    </div>
+    <div class="modal-body" id="paytable-body"></div>
+    <p class="modal-footnote">// pair matches pay 1/3 of triple payout. temperature rises on losses.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  BANKRUPT OVERLAY                                            -->
+<!-- ============================================================ -->
+<div id="bankrupt-overlay" class="modal hidden">
+  <div class="modal-inner bankrupt-inner">
+    <h2 class="bankrupt-title">SEGFAULT :: WALLET_EMPTY</h2>
+    <pre class="bankrupt-art">
+  (╯°□°)╯︵ ┻━┻
+    </pre>
+    <p id="bankrupt-message" class="bankrupt-message"></p>
+    <button id="restart-btn" class="cmd-btn primary">sudo rm -rf /losses &amp;&amp; restart()</button>
+  </div>
+</div>
+
+<!-- particle layer -->
+<canvas id="particle-canvas"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
