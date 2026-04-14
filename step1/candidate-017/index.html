@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine — Burn Your Tokens!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>🤖 AI SLOT MACHINE 🤖</h1>
+      <p class="subtitle">Where Your Tokens Go to Die</p>
+    </header>
+
+    <div class="token-bar">
+      <span class="token-label">Tokens:</span>
+      <span id="token-count">1000</span>
+      <div class="cost-info">Cost per spin: <span id="spin-cost">50</span> tokens</div>
+    </div>
+
+    <div class="reels-window">
+      <div class="reel-container">
+        <div class="reel" id="reel-0">
+          <div class="reel-strip"></div>
+        </div>
+        <div class="reel" id="reel-1">
+          <div class="reel-strip"></div>
+        </div>
+        <div class="reel" id="reel-2">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+      <div class="payline"></div>
+    </div>
+
+    <div id="message" class="message">Insert tokens and pull the lever!</div>
+
+    <div class="controls">
+      <button id="spin-btn" class="spin-btn">🎰 SPIN</button>
+    </div>
+
+    <div class="bet-controls">
+      <button id="bet-down" class="bet-btn">−</button>
+      <span class="bet-label">Bet: <span id="bet-amount">50</span></span>
+      <button id="bet-up" class="bet-btn">+</button>
+    </div>
+
+    <div class="paytable">
+      <h3>— PAYOUTS —</h3>
+      <div class="paytable-grid">
+        <div class="payout-row"><span>🤖🤖🤖</span><span>10x — "AI Overlord"</span></div>
+        <div class="payout-row"><span>🧠🧠🧠</span><span>8x — "Galaxy Brain"</span></div>
+        <div class="payout-row"><span>💰💰💰</span><span>6x — "VC Funded"</span></div>
+        <div class="payout-row"><span>🔥🔥🔥</span><span>5x — "GPU Meltdown"</span></div>
+        <div class="payout-row"><span>💀💀💀</span><span>4x — "Model Collapse"</span></div>
+        <div class="payout-row"><span>🐛🐛🐛</span><span>3x — "It's a Feature"</span></div>
+        <div class="payout-row"><span>Any pair</span><span>1.5x — "Almost Sentient"</span></div>
+      </div>
+    </div>
+
+    <footer class="machine-footer">
+      <p>⚠️ Warning: No actual AI was harmed. Your tokens, however, are gone forever.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
