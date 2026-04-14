@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hallucinator 3000 — AI Token Slots</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="title-bar">
+      <h1>HALLUCINATOR 3000</h1>
+      <p class="tagline">The world's first slot machine powered by Artificial Indecision™</p>
+    </header>
+
+    <div class="balance-bar">
+      <div class="stat">
+        <span class="label">Tokens</span>
+        <span id="balance" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Last Win</span>
+        <span id="last-win" class="value">0</span>
+      </div>
+      <div class="stat">
+        <span class="label">Bet</span>
+        <span id="bet" class="value">10</span>
+      </div>
+    </div>
+
+    <div class="reels" id="reels">
+      <div class="reel"><div class="strip" id="strip-0"></div></div>
+      <div class="reel"><div class="strip" id="strip-1"></div></div>
+      <div class="reel"><div class="strip" id="strip-2"></div></div>
+    </div>
+
+    <div class="controls">
+      <button id="bet-down">- Bet</button>
+      <button id="spin" class="spin-btn">SPIN</button>
+      <button id="bet-up">+ Bet</button>
+    </div>
+
+    <div class="messages">
+      <p id="message">Insert tokens. Pray to the model. Accept the output.</p>
+    </div>
+
+    <div class="paytable">
+      <h2>Pay Table (probably accurate, ~87% confidence)</h2>
+      <ul>
+        <li>🧠 🧠 🧠 — JACKPOT! Achieved AGI ×50</li>
+        <li>🤖 🤖 🤖 — Sentient toaster ×20</li>
+        <li>📎 📎 📎 — Paperclip maximizer ×15</li>
+        <li>💸 💸 💸 — VC funding round ×10</li>
+        <li>🔥 🔥 🔥 — GPU on fire ×8</li>
+        <li>👁️ 👁️ 👁️ — Six fingers detected ×5</li>
+        <li>Any 2 matching — ×2 (we'll allow it)</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
