@@ -6,8 +6,8 @@
 | Timestamp | 2026-04-13 |
 | Model + version string | Opus 4.6 |
 | Input tokens | 19 |
-| Output tokens | 28 |
-| Total tokens | 103.9k |
+| Output tokens | 61.8k |
+| Total tokens | 61.8k |
 | Wall-clock time (s) | 2:13.06 |
 | Tool-reported time (s) | 1m 56s |
 | Files produced (count and names) | 1: index.html|

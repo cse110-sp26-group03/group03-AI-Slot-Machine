@@ -7,7 +7,7 @@
 | Model + version string | Opus 4.6 |
 | Input tokens | 83 |
 | Output tokens | 86k |
-| Total tokens | 86.4k |
+| Total tokens | 86k |
 | Wall-clock time (s) | 1:49.40 |
 | Tool-reported time (s) | 1m 40s |
 | Files produced (count and names) | 1: index.html |
