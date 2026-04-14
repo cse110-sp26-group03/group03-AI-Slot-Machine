@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slots — Feed the Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>🤖 AI TOKEN SLOTS 🤖</h1>
+      <p class="subtitle">Where Your Tokens Go to Die</p>
+    </header>
+
+    <div class="token-display">
+      <div class="token-balance">
+        <span class="token-label">TOKEN BALANCE</span>
+        <span class="token-count" id="tokenCount">1000</span>
+      </div>
+      <div class="cost-display">
+        <span class="cost-label">COST PER SPIN</span>
+        <span class="cost-amount" id="costDisplay">50 tokens</span>
+      </div>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel0">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel1">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel2">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-area" id="messageArea">
+      <p>Insert tokens to feed the AI overlords...</p>
+    </div>
+
+    <div class="controls">
+      <div class="bet-controls">
+        <button id="betDown" class="bet-btn">−</button>
+        <span class="bet-display">Bet: <span id="betAmount">50</span></span>
+        <button id="betUp" class="bet-btn">+</button>
+      </div>
+      <button class="spin-btn" id="spinBtn">
+        <span class="spin-text">🎰 SPEND TOKENS 🎰</span>
+      </button>
+    </div>
+
+    <div class="paytable">
+      <h3>— PAYOUT TABLE —</h3>
+      <div class="paytable-grid">
+        <div class="pay-row"><span>🤖🤖🤖</span><span>GPT Jackpot — 10x</span></div>
+        <div class="pay-row"><span>🧠🧠🧠</span><span>Neural Overload — 8x</span></div>
+        <div class="pay-row"><span>💰💰💰</span><span>VC Funding — 6x</span></div>
+        <div class="pay-row"><span>🔥🔥🔥</span><span>Server Meltdown — 5x</span></div>
+        <div class="pay-row"><span>📊📊📊</span><span>Benchmark Hype — 4x</span></div>
+        <div class="pay-row"><span>💀💀💀</span><span>Token Death — 3x</span></div>
+        <div class="pay-row"><span>Any 2 match</span><span>1x (break even)</span></div>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <span>Tokens Wasted: <strong id="totalWasted">0</strong></span>
+      <span>Spins: <strong id="totalSpins">0</strong></span>
+      <span>Win Rate: <strong id="winRate">0%</strong></span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
