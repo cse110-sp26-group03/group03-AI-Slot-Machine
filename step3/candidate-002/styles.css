@@ -1,0 +1,380 @@
+/* =========================================================================
+   AI SLOT MACHINE - retro CRT terminal aesthetic
+   ========================================================================= */
+
+:root {
+  --neon-green: #39ff14;
+  --dim-green: #1a7a0a;
+  --darker-green: #0b3d05;
+  --bg-black: #040604;
+  --warn-amber: #f5c518;
+  --danger-red: #ff3b3b;
+  --mono: "Courier New", Consolas, monospace;
+}
+
+/* ============================ BASE / RESET ============================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg-black);
+  color: var(--neon-green);
+  font-family: var(--mono);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  padding: 20px;
+  text-shadow: 0 0 2px var(--neon-green), 0 0 8px rgba(57, 255, 20, 0.35);
+  background:
+    radial-gradient(ellipse at center, #061606 0%, #020302 80%) fixed;
+}
+
+/* ============================ CRT OVERLAYS ============================ */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.25) 3px,
+    rgba(0, 0, 0, 0.25) 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+.flicker {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: rgba(57, 255, 20, 0.03);
+  animation: flickerAnim 3.2s infinite steps(3, end);
+}
+
+@keyframes flickerAnim {
+  0%, 100% { opacity: 0.2; }
+  25% { opacity: 0.35; }
+  50% { opacity: 0.15; }
+  75% { opacity: 0.4; }
+}
+
+/* ============================ TERMINAL CONTAINER ============================ */
+.terminal {
+  max-width: 900px;
+  margin: 0 auto;
+  border: 2px solid var(--neon-green);
+  border-radius: 8px;
+  padding: 22px;
+  background: rgba(3, 12, 3, 0.85);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.25), inset 0 0 40px rgba(57, 255, 20, 0.08);
+}
+
+/* ============================ ASCII TITLE ============================ */
+.ascii-title {
+  font-size: 11px;
+  line-height: 1.1;
+  color: var(--neon-green);
+  text-align: center;
+  margin-bottom: 14px;
+  white-space: pre;
+}
+
+/* ============================ STATUS BAR ============================ */
+.status-bar {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-top: 1px dashed var(--dim-green);
+  border-bottom: 1px dashed var(--dim-green);
+  padding: 8px 4px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.stat { font-size: 14px; }
+.label { color: var(--dim-green); margin-right: 4px; }
+
+/* ============================ TEMPERATURE METER ============================ */
+.temperature-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.temp-meter {
+  display: flex;
+  gap: 3px;
+  flex-grow: 1;
+}
+
+.temp-block {
+  flex: 1;
+  height: 14px;
+  border: 1px solid var(--dim-green);
+  background: transparent;
+  transition: background 0.25s;
+}
+
+.temp-block.active { box-shadow: 0 0 6px currentColor; }
+
+.temp-value { min-width: 40px; text-align: right; color: var(--warn-amber); }
+
+/* ============================ REELS ============================ */
+.reels-container {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.reel-frame {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  padding: 18px;
+  border: 2px solid var(--neon-green);
+  background: #000;
+  box-shadow: inset 0 0 30px rgba(57, 255, 20, 0.2);
+  border-radius: 6px;
+}
+
+.reel {
+  width: 120px;
+  height: 140px;
+  background: #010501;
+  border: 1px solid var(--dim-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.symbol {
+  font-size: 80px;
+  line-height: 1;
+  transition: transform 0.05s linear;
+}
+
+.reel.landed .symbol {
+  animation: bounceLanding 0.45s ease-out;
+}
+
+@keyframes bounceLanding {
+  0%   { transform: translateY(-18px); }
+  45%  { transform: translateY(10px); }
+  70%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.reel.winning {
+  border-color: var(--warn-amber);
+  box-shadow: 0 0 18px var(--warn-amber);
+}
+
+.particle-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  font-size: 14px;
+  color: var(--warn-amber);
+  text-shadow: 0 0 6px var(--warn-amber);
+  animation: particleFly 900ms ease-out forwards;
+}
+
+@keyframes particleFly {
+  0%   { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.4); opacity: 0; }
+}
+
+/* ============================ MESSAGE LINE ============================ */
+.message-line {
+  min-height: 22px;
+  padding: 6px 4px;
+  margin-bottom: 14px;
+  border-left: 3px solid var(--neon-green);
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.message-line.win { color: var(--warn-amber); }
+.message-line.lose { color: #ff7070; }
+
+/* ============================ BUTTONS ============================ */
+.bet-controls, .action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.action-buttons { justify-content: center; }
+
+.term-btn {
+  background: transparent;
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-shadow: inherit;
+  transition: all 0.15s;
+}
+
+.term-btn:hover:not(:disabled) {
+  background: var(--neon-green);
+  color: #000;
+  text-shadow: none;
+  box-shadow: 0 0 12px var(--neon-green);
+}
+
+.term-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.term-btn.primary {
+  border-color: var(--warn-amber);
+  color: var(--warn-amber);
+  text-shadow: 0 0 6px var(--warn-amber);
+}
+.term-btn.primary:hover:not(:disabled) {
+  background: var(--warn-amber);
+  color: #000;
+  box-shadow: 0 0 18px var(--warn-amber);
+}
+
+.term-btn.danger {
+  border-color: var(--danger-red);
+  color: var(--danger-red);
+  text-shadow: 0 0 4px var(--danger-red);
+}
+.term-btn.danger:hover:not(:disabled) {
+  background: var(--danger-red);
+  color: #000;
+}
+
+.term-btn.big { font-size: 16px; padding: 12px 20px; }
+.term-btn.tiny { font-size: 11px; padding: 4px 8px; margin-left: auto; }
+
+.term-btn.active {
+  background: var(--dim-green);
+  color: var(--neon-green);
+}
+
+/* ============================ INFO GRID ============================ */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.info-box {
+  border: 1px dashed var(--dim-green);
+  padding: 10px 12px;
+  font-size: 12px;
+}
+
+.info-box h3 {
+  font-size: 13px;
+  color: var(--warn-amber);
+  margin-bottom: 6px;
+}
+
+.stat-list { list-style: none; }
+.stat-list li { margin: 3px 0; }
+
+.history-list {
+  list-style: none;
+  max-height: 140px;
+  overflow-y: auto;
+}
+.history-list li {
+  font-size: 12px;
+  padding: 2px 0;
+  border-bottom: 1px dotted rgba(57, 255, 20, 0.15);
+}
+.history-list li.win { color: var(--warn-amber); }
+.history-list li.lose { color: #ff7070; }
+
+@media (max-width: 640px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .reel { width: 85px; height: 100px; }
+  .symbol { font-size: 54px; }
+  .ascii-title { font-size: 8px; }
+}
+
+/* ============================ PAYTABLE ============================ */
+.paytable {
+  border: 1px dashed var(--neon-green);
+  padding: 12px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.paytable.hidden { display: none; }
+
+.paytable h3 { color: var(--warn-amber); margin-bottom: 8px; }
+
+.paytable table { width: 100%; border-collapse: collapse; }
+.paytable th, .paytable td {
+  text-align: left;
+  padding: 4px 6px;
+  border-bottom: 1px dotted var(--dim-green);
+}
+.paytable th { color: var(--warn-amber); }
+.paytable-note { margin-top: 8px; color: var(--dim-green); font-style: italic; }
+
+/* ============================ BANKRUPT OVERLAY ============================ */
+.bankrupt-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.bankrupt-overlay.hidden { display: none; }
+
+.bankrupt-box {
+  border: 2px solid var(--danger-red);
+  padding: 30px;
+  text-align: center;
+  max-width: 520px;
+  background: #0a0000;
+  box-shadow: 0 0 40px var(--danger-red);
+  animation: bankruptPulse 1.2s infinite alternate;
+}
+
+@keyframes bankruptPulse {
+  from { box-shadow: 0 0 30px var(--danger-red); }
+  to   { box-shadow: 0 0 60px var(--danger-red); }
+}
+
+.ascii-skull {
+  color: var(--danger-red);
+  font-size: 13px;
+  margin-bottom: 16px;
+  text-shadow: 0 0 6px var(--danger-red);
+}
+
+.bankrupt-box h2 {
+  color: var(--warn-amber);
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-family: var(--mono);
+}
