@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>$ ./slot_machine --model=gpt-vegas</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="crt">
+  <header>
+    <pre id="ascii-title">
+ ████████  ██████  ██   ██ ███████ ███    ██     ███████ ██       ██████  ████████
+    ██    ██    ██ ██  ██  ██      ████   ██     ██      ██      ██    ██    ██
+    ██    ██    ██ █████   █████   ██ ██  ██     ███████ ██      ██    ██    ██
+    ██    ██    ██ ██  ██  ██      ██  ██ ██          ██ ██      ██    ██    ██
+    ██     ██████  ██   ██ ███████ ██   ████     ███████ ███████  ██████     ██
+            [ AI Hype Simulator v4.2.0 — Powered by Vibes™ ]
+    </pre>
+    <div class="status-bar">
+      <span>user@hypeOS:~$</span>
+      <span id="clock"></span>
+      <span>[OK] gpu: 1x H100 (leased)</span>
+      <button id="mute-btn" class="term-btn">[ 🔊 audio=on ]</button>
+      <button id="paytable-btn" class="term-btn">[ ? paytable ]</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hud">
+      <div class="hud-cell">
+        <div class="label">$TOKENS.balance</div>
+        <div id="balance" class="value big">1000</div>
+      </div>
+      <div class="hud-cell">
+        <div class="label">bet.size</div>
+        <div class="bet-control">
+          <button id="bet-down" class="term-btn">[-]</button>
+          <span id="bet" class="value">10</span>
+          <button id="bet-up" class="term-btn">[+]</button>
+        </div>
+      </div>
+      <div class="hud-cell">
+        <div class="label">model.temperature</div>
+        <div class="temp-bar"><div id="temp-fill"></div><span id="temp-val">0.00</span></div>
+      </div>
+    </section>
+
+    <section class="machine">
+      <div class="reels" id="reels">
+        <div class="reel" data-reel="0"><div class="reel-inner"><span>🤖</span></div></div>
+        <div class="reel" data-reel="1"><div class="reel-inner"><span>🧠</span></div></div>
+        <div class="reel" data-reel="2"><div class="reel-inner"><span>💾</span></div></div>
+      </div>
+      <div class="result" id="result">&gt; awaiting inference...</div>
+      <button id="spin-btn" class="spin-btn">&gt; model.generate()</button>
+    </section>
+
+    <section class="panels">
+      <div class="panel">
+        <div class="panel-title">// spin.history[-10:]</div>
+        <ul id="history" class="history"></ul>
+      </div>
+      <div class="panel">
+        <div class="panel-title">// session.stats</div>
+        <ul class="stats">
+          <li>total_spins: <span id="stat-spins">0</span></li>
+          <li>wins: <span id="stat-wins">0</span></li>
+          <li>win_rate: <span id="stat-rate">0.00%</span></li>
+          <li>peak_balance: <span id="stat-peak">1000</span></li>
+          <li>net_pnl: <span id="stat-pnl">+0</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div id="particles" class="particles"></div>
+
+  <div id="paytable" class="overlay hidden">
+    <div class="overlay-box">
+      <div class="panel-title">// PAYTABLE.json</div>
+      <table id="paytable-table"></table>
+      <p class="fine-print">* triple match = full payout × bet. pair match = 0.5× multiplier × bet. single = void.</p>
+      <button class="term-btn" onclick="document.getElementById('paytable').classList.add('hidden')">[ close ]</button>
+    </div>
+  </div>
+
+  <div id="bankrupt" class="overlay hidden">
+    <div class="overlay-box bankrupt">
+      <pre>
+  ██████   █████  ███    ██ ██   ██ ██████  ██    ██ ██████  ████████
+  ██   ██ ██   ██ ████   ██ ██  ██  ██   ██ ██    ██ ██   ██    ██
+  ██████  ███████ ██ ██  ██ █████   ██████  ██    ██ ██████     ██
+  ██   ██ ██   ██ ██  ██ ██ ██  ██  ██   ██ ██    ██ ██         ██
+  ██████  ██   ██ ██   ████ ██   ██ ██   ██  ██████  ██         ██
+      </pre>
+      <p id="bankrupt-msg"></p>
+      <button id="restart-btn" class="term-btn">[ ./restart --seed=1000 ]</button>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
