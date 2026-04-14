@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slots</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <h1 class="title">AI Token Slots</h1>
+    <p class="subtitle">Spend tokens like a real LLM!</p>
+
+    <div class="token-display">
+      <span class="token-icon">&#129689;</span>
+      <span id="token-count">100</span> tokens
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="message" class="message">Insert tokens to play!</div>
+
+    <div class="controls">
+      <label for="bet-select">Bet:</label>
+      <select id="bet-select">
+        <option value="5">5 tokens</option>
+        <option value="10" selected>10 tokens</option>
+        <option value="25">25 tokens</option>
+        <option value="50">50 tokens</option>
+      </select>
+      <button id="spin-btn">SPIN</button>
+    </div>
+
+    <div class="paytable">
+      <h2>Paytable</h2>
+      <div class="paytable-row"><span>&#129302;&#129302;&#129302;</span> <span>Robot Uprising &mdash; 10x</span></div>
+      <div class="paytable-row"><span>&#128293;&#128293;&#128293;</span> <span>GPU Meltdown &mdash; 8x</span></div>
+      <div class="paytable-row"><span>&#128176;&#128176;&#128176;</span> <span>VC Funding &mdash; 6x</span></div>
+      <div class="paytable-row"><span>&#129504;&#129504;&#129504;</span> <span>Sentience &mdash; 5x</span></div>
+      <div class="paytable-row"><span>&#128169;&#128169;&#128169;</span> <span>Hallucination &mdash; 4x</span></div>
+      <div class="paytable-row"><span>&#9888;&#65039;&#9888;&#65039;&#9888;&#65039;</span> <span>Bias Detected &mdash; 3x</span></div>
+      <div class="paytable-row"><span>Any pair</span> <span>Partial Match &mdash; 1x</span></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TokenBurn 3000 — AI Slot Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cabinet">
+    <div class="marquee">
+      <h1>TokenBurn <span class="version">3000</span></h1>
+      <p class="tagline">"Your tokens were going to expire anyway."</p>
+    </div>
+
+    <div class="status-bar">
+      <div class="wallet">
+        <span class="wallet-icon">🪙</span>
+        <span class="wallet-label">Token Balance:</span>
+        <span id="balance" class="balance">1000</span>
+      </div>
+      <div class="cost-indicator">
+        <span class="cost-label">Cost per spin:</span>
+        <span id="cost-display" class="cost-value">50</span>
+      </div>
+    </div>
+
+    <div class="viewport">
+      <div class="reel-frame">
+        <div class="reel-strip" id="reel-0"></div>
+      </div>
+      <div class="reel-frame">
+        <div class="reel-strip" id="reel-1"></div>
+      </div>
+      <div class="reel-frame">
+        <div class="reel-strip" id="reel-2"></div>
+      </div>
+    </div>
+
+    <div id="result-banner" class="result-banner hidden"></div>
+
+    <div class="controls">
+      <div class="bet-selector">
+        <button id="bet-down" class="arrow-btn" aria-label="Decrease bet">&#9664;</button>
+        <div class="bet-chip" id="bet-chip">50</div>
+        <button id="bet-up" class="arrow-btn" aria-label="Increase bet">&#9654;</button>
+      </div>
+      <button id="spin" class="spin-button">
+        <span class="spin-label">INFERENCE</span>
+        <span class="spin-sub">( spin )</span>
+      </button>
+    </div>
+
+    <details class="paytable-drawer">
+      <summary>Paytable &amp; Lore</summary>
+      <table class="paytable">
+        <thead>
+          <tr><th>Combo</th><th>Payout</th><th>Flavor</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>🤖🤖🤖</td><td>12x</td><td>Singularity Achieved</td></tr>
+          <tr><td>🧠🧠🧠</td><td>8x</td><td>Emergent Reasoning</td></tr>
+          <tr><td>🔥🔥🔥</td><td>6x</td><td>GPU Thermal Event</td></tr>
+          <tr><td>💬💬💬</td><td>5x</td><td>Prompt Leak</td></tr>
+          <tr><td>⚡⚡⚡</td><td>4x</td><td>Rate Limit Surge</td></tr>
+          <tr><td>💀💀💀</td><td>3x</td><td>Model Collapse</td></tr>
+          <tr><td>🎰🎰🎰</td><td>10x</td><td>Jackpot Hallucination</td></tr>
+          <tr><td>Any pair</td><td>1.5x</td><td>Partial Coherence</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <div class="ticker" aria-live="polite">
+      <span id="ticker-text">Welcome. You have mass-produced tokens. Let's waste them.</span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

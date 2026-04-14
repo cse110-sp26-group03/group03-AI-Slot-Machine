@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine - Spend Your Tokens!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>AI SLOT MACHINE</h1>
+      <p class="subtitle">Feed the model. Burn your tokens.</p>
+    </header>
+
+    <div class="token-display">
+      <span class="token-label">TOKENS</span>
+      <span id="token-count" class="token-count">1000</span>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">🤖</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">🧠</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">💬</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="bet-controls">
+        <button id="bet-down" class="bet-btn" aria-label="Decrease bet">−</button>
+        <div class="bet-display">
+          <span class="bet-label">BET</span>
+          <span id="bet-amount">50</span>
+        </div>
+        <button id="bet-up" class="bet-btn" aria-label="Increase bet">+</button>
+      </div>
+      <button id="spin-btn" class="spin-btn">GENERATE</button>
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <div class="paytable">
+      <h2>PAYTABLE</h2>
+      <div class="paytable-grid">
+        <div class="pay-row"><span>🤖🤖🤖</span><span>10x — Full Hallucination</span></div>
+        <div class="pay-row"><span>🧠🧠🧠</span><span>8x — Emergent Intelligence</span></div>
+        <div class="pay-row"><span>🔥🔥🔥</span><span>6x — GPU Meltdown</span></div>
+        <div class="pay-row"><span>💬💬💬</span><span>5x — Prompt Injection</span></div>
+        <div class="pay-row"><span>⚡⚡⚡</span><span>4x — Token Overflow</span></div>
+        <div class="pay-row"><span>💀💀💀</span><span>3x — Model Collapse</span></div>
+        <div class="pay-row"><span>Any pair</span><span>1.5x — Partial Match</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

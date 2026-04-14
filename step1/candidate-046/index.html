@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine — Token Burner 3000</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>🤖 TOKEN BURNER 3000 🤖</h1>
+      <p class="subtitle">Spend tokens. Win tokens. Hallucinate profits.</p>
+    </header>
+
+    <div class="balance-bar">
+      <span class="balance-label">Your AI Tokens:</span>
+      <span id="balance" class="balance-value">1000</span>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">🤖</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">🧠</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">💰</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="message" class="message">Insert tokens and pull the lever!</div>
+
+    <div class="controls">
+      <div class="bet-controls">
+        <button id="bet-down" class="btn btn-small" aria-label="Decrease bet">−</button>
+        <span class="bet-display">Bet: <span id="bet-amount">10</span> tokens</span>
+        <button id="bet-up" class="btn btn-small" aria-label="Increase bet">+</button>
+      </div>
+      <button id="spin-btn" class="btn btn-spin">🎰 SPIN THE MODEL 🎰</button>
+    </div>
+
+    <div class="paytable">
+      <h2>Paytable</h2>
+      <div class="paytable-grid">
+        <div class="pay-row"><span>🤖🤖🤖</span><span>Singularity! — 20x</span></div>
+        <div class="pay-row"><span>💰💰💰</span><span>VC Funding! — 15x</span></div>
+        <div class="pay-row"><span>🧠🧠🧠</span><span>AGI Achieved! — 10x</span></div>
+        <div class="pay-row"><span>🔥🔥🔥</span><span>GPU Meltdown! — 8x</span></div>
+        <div class="pay-row"><span>📊📊📊</span><span>Benchmark Hacked! — 5x</span></div>
+        <div class="pay-row"><span>🫠🫠🫠</span><span>Hallucination! — 3x</span></div>
+        <div class="pay-row"><span>Any pair</span><span>Copilot Assist — 2x</span></div>
+      </div>
+    </div>
+
+    <footer class="machine-footer">
+      <p>⚠️ Warning: No actual intelligence was used in this machine.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

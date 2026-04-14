@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine - Spend Your Tokens Wisely</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>AI SLOT MACHINE</h1>
+      <p class="tagline">"Your tokens are definitely not being wasted"</p>
+    </header>
+
+    <div class="token-display">
+      <span class="token-icon">&#x1F4B0;</span>
+      <span id="token-count">100</span>
+      <span class="token-label">TOKENS</span>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">&#x1F916;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">&#x1F9E0;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">&#x26A1;</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="result-message" class="result-message"></div>
+
+    <div class="controls">
+      <div class="bet-controls">
+        <button id="bet-down" class="bet-btn" aria-label="Decrease bet">-</button>
+        <div class="bet-display">
+          <span class="bet-label">BET</span>
+          <span id="bet-amount">10</span>
+        </div>
+        <button id="bet-up" class="bet-btn" aria-label="Increase bet">+</button>
+      </div>
+      <button id="spin-btn" class="spin-btn">SPIN</button>
+    </div>
+
+    <div class="paytable">
+      <h2>PAYTABLE</h2>
+      <div class="paytable-grid">
+        <div class="pay-row"><span>&#x1F916;&#x1F916;&#x1F916;</span><span>10x - "AI Overlord"</span></div>
+        <div class="pay-row"><span>&#x1F9E0;&#x1F9E0;&#x1F9E0;</span><span>8x - "Big Brain Energy"</span></div>
+        <div class="pay-row"><span>&#x1F4A1;&#x1F4A1;&#x1F4A1;</span><span>6x - "Hallucination Jackpot"</span></div>
+        <div class="pay-row"><span>&#x26A1;&#x26A1;&#x26A1;</span><span>5x - "GPU Meltdown"</span></div>
+        <div class="pay-row"><span>&#x1F525;&#x1F525;&#x1F525;</span><span>4x - "Model Collapse"</span></div>
+        <div class="pay-row"><span>&#x1F4B8;&#x1F4B8;&#x1F4B8;</span><span>3x - "VC Funding Round"</span></div>
+        <div class="pay-row"><span>Any pair</span><span>1x - "Almost Sentient"</span></div>
+      </div>
+    </div>
+
+    <footer class="machine-footer">
+      <p>Warning: No actual AI was harmed in the making of this slot machine.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
