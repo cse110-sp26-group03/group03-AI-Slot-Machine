@@ -13,3 +13,6 @@
 | Files produced (count and names) | 3 (index.html, style.css, app.js)  |
 | Lines of code | ~530 |
 | Runs in browser? | Yes |
+
+
+The app looked alright. The rool animation was a little weird. There was a lack to details as compared to the other results but no major flaws. 
