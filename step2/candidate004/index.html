@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine // token_casino v0.1</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="crt">
+    <header>
+      <pre class="ascii-title">
+ _____ _____ _   _ _____ _   _
+|_   _|  _  | | / |  ___| \ | |
+  | | | | | | |/ /| |__ |  \| |
+  | | | | | |    \|  __|| . ` |
+  | | \ \_/ | |\  | |___| |\  |
+  \_/  \___/\_| \_\____/\_| \_/
+   ____   _    ____ ___ _   _  ___
+  / ___| / \  / ___|_ _| \ | |/ _ \
+ | |    / _ \ \___ \| ||  \| | | | |
+ | |___/ ___ \ ___) | || |\  | |_| |
+  \____/_/   \_|____/___|_| \_|\___/
+      </pre>
+      <p class="tagline">[ where your tokens go to hallucinate ]</p>
+    </header>
+
+    <div class="main-layout">
+      <aside class="left-panel">
+        <div class="panel stats-panel">
+          <h3>&gt; system.stats()</h3>
+          <div class="stat-row"><span class="label">total_spins:</span> <span id="stat-spins">0</span></div>
+          <div class="stat-row"><span class="label">win_rate:</span> <span id="stat-winrate">0.0%</span></div>
+          <div class="stat-row"><span class="label">peak_balance:</span> <span id="stat-peak">1000</span></div>
+        </div>
+        <div class="panel history-panel">
+          <h3>&gt; console.log(history)</h3>
+          <ul id="history-log"></ul>
+        </div>
+      </aside>
+
+      <main class="center-panel">
+        <div class="balance-display">
+          <span class="label">token_balance =</span>
+          <span id="balance" class="balance-value">1000</span>
+        </div>
+
+        <div class="temperature-display">
+          <span class="label">model.temperature:</span>
+          <div class="temp-bar-container">
+            <div id="temp-bar" class="temp-bar" style="width: 0%"></div>
+          </div>
+          <span id="temp-value" class="temp-value">0.00</span>
+        </div>
+
+        <div class="slot-machine">
+          <div class="reels-container">
+            <div class="reel-window" id="reel-0">
+              <div class="reel-strip">
+                <div class="reel-cell"></div>
+              </div>
+            </div>
+            <div class="reel-window" id="reel-1">
+              <div class="reel-strip">
+                <div class="reel-cell"></div>
+              </div>
+            </div>
+            <div class="reel-window" id="reel-2">
+              <div class="reel-strip">
+                <div class="reel-cell"></div>
+              </div>
+            </div>
+          </div>
+          <div class="payline"></div>
+        </div>
+
+        <div class="controls">
+          <div class="bet-controls">
+            <button id="bet-down" class="btn btn-small">&lt;--</button>
+            <span class="label">bet =</span>
+            <span id="bet-amount" class="bet-value">10</span>
+            <button id="bet-up" class="btn btn-small">--&gt;</button>
+          </div>
+          <button id="spin-btn" class="btn btn-spin">model.generate()</button>
+          <button id="mute-btn" class="btn btn-small btn-mute" title="Toggle sound">&#x1F50A;</button>
+        </div>
+      </main>
+
+      <aside class="right-panel">
+        <div class="panel paytable-panel">
+          <h3>
+            <button id="paytable-toggle" class="toggle-btn">&gt; cat paytable.md <span id="paytable-arrow">&#9654;</span></button>
+          </h3>
+          <div id="paytable-content" class="paytable-content hidden">
+            <table id="paytable"></table>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="bankrupt-overlay" class="bankrupt-overlay hidden">
+    <div class="bankrupt-modal">
+      <pre class="bankrupt-art">
+  ____    _    __  __ _____
+ / ___|  / \  |  \/  | ____|
+| |  _  / _ \ | |\/| |  _|
+| |_| |/ ___ \| |  | | |___
+ \____/_/   \_|_|  |_|_____|
+   _____     _______ ____
+  / _ \ \   / | ____|  _ \
+ | | | \ \ / /|  _| | |_) |
+ | |_| |\ V / | |___|  _ <
+  \___/  \_/  |_____|_| \_\
+      </pre>
+      <p id="bankrupt-msg" class="bankrupt-msg"></p>
+      <button id="restart-btn" class="btn btn-spin">sudo reboot --tokens</button>
+    </div>
+  </div>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
