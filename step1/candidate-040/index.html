@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Slot Machine — Burn Those Tokens</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🤖 The Hallucinator 3000 🎰</h1>
+      <p class="tagline">Spend tokens. Win tokens. Question reality.</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="label">Token Balance</span>
+        <span id="balance" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Context Window</span>
+        <span id="context" class="value">0%</span>
+      </div>
+      <div class="stat">
+        <span class="label">Hallucinations</span>
+        <span id="halluc" class="value">0</span>
+      </div>
+    </section>
+
+    <section class="machine">
+      <div class="reels">
+        <div class="reel" id="reel0"><div class="strip"></div></div>
+        <div class="reel" id="reel1"><div class="strip"></div></div>
+        <div class="reel" id="reel2"><div class="strip"></div></div>
+      </div>
+
+      <div class="controls">
+        <label for="bet">Bet:</label>
+        <button class="bet-btn" data-delta="-10">−10</button>
+        <span id="bet" class="bet">50</span>
+        <button class="bet-btn" data-delta="10">+10</button>
+        <button id="spin" class="spin">PROMPT ME 🎲</button>
+      </div>
+
+      <p id="message" class="message">Insert tokens to begin inference...</p>
+    </section>
+
+    <section class="log">
+      <h3>📜 Training Log</h3>
+      <ul id="log"></ul>
+    </section>
+
+    <footer>
+      <small>No GPUs were harmed in the making of this game.* <br><em>*probably hallucinated</em></small>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
