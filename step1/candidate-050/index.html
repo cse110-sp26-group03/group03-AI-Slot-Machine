@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine — Token Burner 3000</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>TOKEN BURNER <span class="glow">3000</span></h1>
+      <p class="subtitle">"Your tokens were going to expire anyway"</p>
+    </header>
+
+    <!-- Token balance display -->
+    <div class="balance-bar">
+      <span class="balance-label">Token Balance:</span>
+      <span id="balance" class="balance-value">1000</span>
+      <span class="balance-unit">tokens</span>
+    </div>
+
+    <!-- Slot reels -->
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="reel-strip"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Win / message display -->
+    <div id="message" class="message"></div>
+
+    <!-- Bet controls -->
+    <div class="controls">
+      <div class="bet-section">
+        <button id="bet-down" class="bet-btn" aria-label="Decrease bet">−</button>
+        <div class="bet-display">
+          <span class="bet-label">BET</span>
+          <span id="bet-amount">50</span>
+        </div>
+        <button id="bet-up" class="bet-btn" aria-label="Increase bet">+</button>
+      </div>
+      <button id="spin-btn" class="spin-btn">SPIN</button>
+    </div>
+
+    <!-- Paytable -->
+    <details class="paytable">
+      <summary>Paytable & Rules</summary>
+      <div class="paytable-content">
+        <table>
+          <thead>
+            <tr><th>Combo</th><th>Payout</th><th>Flavor</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>🤖🤖🤖</td><td>10x</td><td>Skynet approves</td></tr>
+            <tr><td>🧠🧠🧠</td><td>8x</td><td>Galaxy brain moment</td></tr>
+            <tr><td>💰💰💰</td><td>6x</td><td>VC funding secured</td></tr>
+            <tr><td>🔥🔥🔥</td><td>5x</td><td>Your GPU is on fire</td></tr>
+            <tr><td>💀💀💀</td><td>4x</td><td>Model collapsed</td></tr>
+            <tr><td>🐛🐛🐛</td><td>3x</td><td>Feature, not a bug</td></tr>
+            <tr><td>Any pair</td><td>1.5x</td><td>Partial hallucination</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
