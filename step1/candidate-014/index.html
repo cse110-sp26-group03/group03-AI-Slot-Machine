@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Hallucination Machine — AI Slots</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="machine">
+    <header>
+      <h1>THE HALLUCINATION MACHINE</h1>
+      <p class="tagline">Spend tokens. Win tokens. Achieve AGI (maybe).</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="label">Tokens</span>
+        <span id="tokens" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Bet</span>
+        <span id="bet" class="value">10</span>
+      </div>
+      <div class="stat">
+        <span class="label">Parameters Burned</span>
+        <span id="burned" class="value">0B</span>
+      </div>
+    </section>
+
+    <section class="reels" id="reels">
+      <div class="reel"><div class="strip" data-reel="0"></div></div>
+      <div class="reel"><div class="strip" data-reel="1"></div></div>
+      <div class="reel"><div class="strip" data-reel="2"></div></div>
+    </section>
+
+    <section class="controls">
+      <button id="bet-down">−</button>
+      <button id="spin">SPIN ($10)</button>
+      <button id="bet-up">+</button>
+    </section>
+
+    <section id="message" class="message">Insert tokens. Pray to the transformer.</section>
+
+    <details class="paytable">
+      <summary>Paytable & Disclosures</summary>
+      <ul>
+        <li>🤖🤖🤖 — 50× (Artificial General Intelligence achieved)</li>
+        <li>🧠🧠🧠 — 25× (Emergent behavior!)</li>
+        <li>⚡⚡⚡ — 15× (GPU go brrr)</li>
+        <li>💾💾💾 — 10× (Context window: full)</li>
+        <li>📊📊📊 — 8× (Benchmarks crushed)</li>
+        <li>🎲🎲🎲 — 5× (Stochastic parrot jackpot)</li>
+        <li>Any two matching — 2× (close enough, ship it)</li>
+        <li>⚠️ anywhere — lose bet + hallucinate penalty</li>
+      </ul>
+      <p class="fine">Results are definitely not rigged by a biased training set. Past performance does not predict future loss.</p>
+    </details>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
