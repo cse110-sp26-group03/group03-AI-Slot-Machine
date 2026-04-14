@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hallucinator.exe // AI SLOT TERMINAL</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="crt-flicker"></div>
+
+<main class="terminal">
+  <header class="title-bar">
+    <pre class="ascii-title">
+ █████╗ ██╗    ██╗  ███████╗██╗      ██████╗ ████████╗███████╗
+██╔══██╗██║    ██║  ██╔════╝██║     ██╔═══██╗╚══██╔══╝██╔════╝
+███████║██║    ██║  ███████╗██║     ██║   ██║   ██║   ███████╗
+██╔══██║██║    ╚═╝  ╚════██║██║     ██║   ██║   ██║   ╚════██║
+██║  ██║██║    ██╗  ███████║███████╗╚██████╔╝   ██║   ███████║
+╚═╝  ╚═╝╚═╝    ╚═╝  ╚══════╝╚══════╝ ╚═════╝    ╚═╝   ╚══════╝
+    </pre>
+    <div class="subtitle">[ hallucinator.exe v4.2.0 — pretraining your wallet since 2023 ]</div>
+  </header>
+
+  <section class="hud">
+    <div class="hud-cell">
+      <span class="hud-label">$ balance</span>
+      <span class="hud-value" id="balance">1000</span>
+      <span class="hud-unit">TKN</span>
+    </div>
+    <div class="hud-cell">
+      <span class="hud-label">$ bet_size</span>
+      <div class="bet-controls">
+        <button class="bet-btn" id="bet-down" aria-label="decrease bet">[-]</button>
+        <span class="hud-value" id="bet">10</span>
+        <button class="bet-btn" id="bet-up" aria-label="increase bet">[+]</button>
+      </div>
+    </div>
+    <div class="hud-cell">
+      <span class="hud-label">$ temperature</span>
+      <div class="temp-bar"><div class="temp-fill" id="temp-fill"></div></div>
+      <span class="hud-value" id="temp-val">0.20</span>
+    </div>
+    <div class="hud-cell">
+      <span class="hud-label">$ audio</span>
+      <button class="toggle-btn" id="mute-toggle">[ sound: ON ]</button>
+    </div>
+  </section>
+
+  <section class="reels-frame">
+    <div class="reels-label">>>> inference in progress...</div>
+    <div class="reels" id="reels">
+      <div class="reel" data-reel="0"><div class="reel-inner"><div class="reel-symbol">?</div></div></div>
+      <div class="reel" data-reel="1"><div class="reel-inner"><div class="reel-symbol">?</div></div></div>
+      <div class="reel" data-reel="2"><div class="reel-inner"><div class="reel-symbol">?</div></div></div>
+    </div>
+    <div class="result-line" id="result-line">> awaiting prompt...</div>
+    <div class="particles" id="particles"></div>
+  </section>
+
+  <section class="controls">
+    <button class="spin-btn" id="spin-btn">model.generate()</button>
+    <button class="secondary-btn" id="paytable-btn">paytable.md</button>
+    <button class="secondary-btn" id="reset-btn">factory_reset()</button>
+  </section>
+
+  <section class="lower-panels">
+    <div class="panel">
+      <h3>// spin_history.log</h3>
+      <ul class="history" id="history">
+        <li class="empty">// no inferences logged</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>// benchmarks.json</h3>
+      <dl class="stats">
+        <dt>total_spins</dt><dd id="stat-spins">0</dd>
+        <dt>win_rate</dt><dd id="stat-winrate">—</dd>
+        <dt>peak_balance</dt><dd id="stat-peak">1000</dd>
+        <dt>tokens_wagered</dt><dd id="stat-wagered">0</dd>
+        <dt>tokens_won</dt><dd id="stat-won">0</dd>
+        <dt>biggest_hit</dt><dd id="stat-biggest">0</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span class="blink">█</span> <span id="status-line">system.ready // press model.generate() to begin</span>
+  </footer>
+</main>
+
+<!-- Paytable modal -->
+<div class="modal hidden" id="paytable-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span>// paytable.md — open in read-only mode</span>
+      <button class="close-btn" id="close-paytable">[x]</button>
+    </div>
+    <div class="modal-body" id="paytable-body"></div>
+    <div class="modal-footer">
+      <div>triple_match = multiplier × bet</div>
+      <div>pair_match = floor(multiplier × bet / 3)</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bankrupt overlay -->
+<div class="modal hidden" id="bankrupt-modal">
+  <div class="modal-box bankrupt-box">
+    <pre class="bankrupt-ascii">
+ ▄▄▄▄    ▄▄▄       ███▄    █  ██ ▄█▀ ██▀███   █    ██  ██▓███  ▄▄▄█████▓
+▓█████▄ ▒████▄     ██ ▀█   █  ██▄█▒ ▓██ ▒ ██▒ ██  ▓██▒▓██░  ██▒▓  ██▒ ▓▒
+▒██▒ ▄██▒██  ▀█▄  ▓██  ▀█ ██▒▓███▄░ ▓██ ░▄█ ▒▓██  ▒██░▓██░ ██▓▒▒ ▓██░ ▒░
+▒██░█▀  ░██▄▄▄▄██ ▓██▒  ▐▌██▒▓██ █▄ ▒██▀▀█▄  ▓▓█  ░██░▒██▄█▓▒ ▒░ ▓██▓ ░
+░▓█  ▀█▓ ▓█   ▓██▒▒██░   ▓██░▒██▒ █▄░██▓ ▒██▒▒▒█████▓ ▒██▒ ░  ░  ▒██▒ ░
+░▒▓███▀▒ ▒▒   ▓▒█░░ ▒░   ▒ ▒ ▒ ▒▒ ▓▒░ ▒▓ ░▒▓░░▒▓▒ ▒ ▒ ▒▓▒░ ░  ░  ▒ ░░
+    </pre>
+    <div class="bankrupt-msg" id="bankrupt-msg"></div>
+    <div class="bankrupt-sub">> context_window exhausted. token budget: $0.00</div>
+    <button class="spin-btn" id="restart-btn">reinitialize_weights()</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
