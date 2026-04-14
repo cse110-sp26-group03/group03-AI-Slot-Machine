@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine - Spend Your Tokens!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>The <span class="glow">LLM</span> Slot Machine</h1>
+      <p class="tagline">"Your tokens are our tokens"</p>
+    </header>
+
+    <div class="token-display">
+      <span class="token-icon">T</span>
+      <span id="balance" class="balance">1000</span>
+      <span class="token-label">tokens</span>
+    </div>
+
+    <div class="reels-window">
+      <div class="reel-container">
+        <div class="reel" id="reel0">
+          <div class="symbol">&#129302;</div>
+        </div>
+        <div class="reel" id="reel1">
+          <div class="symbol">&#129302;</div>
+        </div>
+        <div class="reel" id="reel2">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bet-controls">
+      <button id="bet-down" class="bet-btn" aria-label="Decrease bet">-</button>
+      <div class="bet-display">
+        <span class="bet-label">BET</span>
+        <span id="bet-amount">50</span>
+        <span class="bet-label">tokens</span>
+      </div>
+      <button id="bet-up" class="bet-btn" aria-label="Increase bet">+</button>
+    </div>
+
+    <button id="spin-btn" class="spin-btn">SPIN</button>
+
+    <div id="message" class="message"></div>
+
+    <div class="paytable">
+      <h2>Paytable</h2>
+      <div class="paytable-grid">
+        <div class="pay-row"><span>&#129302;&#129302;&#129302;</span><span>GPT Jackpot &mdash; 10x</span></div>
+        <div class="pay-row"><span>&#128640;&#128640;&#128640;</span><span>To The Moon &mdash; 8x</span></div>
+        <div class="pay-row"><span>&#129297;&#129297;&#129297;</span><span>Nerd Bonus &mdash; 6x</span></div>
+        <div class="pay-row"><span>&#128176;&#128176;&#128176;</span><span>VC Funding &mdash; 5x</span></div>
+        <div class="pay-row"><span>&#128293;&#128293;&#128293;</span><span>Dumpster Fire &mdash; 4x</span></div>
+        <div class="pay-row"><span>&#9888;&#65039;&#9888;&#65039;&#9888;&#65039;</span><span>Hallucination &mdash; 3x</span></div>
+        <div class="pay-row"><span>Any two match</span><span>1.5x</span></div>
+      </div>
+    </div>
+
+    <footer class="machine-footer">
+      <p>Warning: This machine hallucinates wins 0% of the time.</p>
+    </footer>
+  </div>
+
+  <div id="confetti-canvas"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Token Slots — Burn Compute, Win Compute</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🤖 AI Token Slots 🎰</h1>
+      <p class="tagline">Where your compute budget goes to hallucinate.</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="label">Tokens</span>
+        <span id="tokens" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Bet</span>
+        <span id="bet" class="value">10</span>
+      </div>
+      <div class="stat">
+        <span class="label">Last Win</span>
+        <span id="lastWin" class="value">0</span>
+      </div>
+    </div>
+
+    <div class="machine">
+      <div class="reels">
+        <div class="reel" id="reel0"><div class="strip"></div></div>
+        <div class="reel" id="reel1"><div class="strip"></div></div>
+        <div class="reel" id="reel2"><div class="strip"></div></div>
+      </div>
+      <div class="payline"></div>
+    </div>
+
+    <div class="message" id="message">Insert tokens. Pray to the model.</div>
+
+    <div class="controls">
+      <button id="betDown">− Bet</button>
+      <button id="betUp">+ Bet</button>
+      <button id="spin" class="spin">SPIN 🧠</button>
+      <button id="beg">Beg for tokens</button>
+    </div>
+
+    <details class="paytable">
+      <summary>Paytable (a.k.a. your training data)</summary>
+      <ul>
+        <li>🧠🧠🧠 — 50× bet — "Superintelligence achieved"</li>
+        <li>💸💸💸 — 25× bet — "Series F closed"</li>
+        <li>📈📈📈 — 15× bet — "Scaling laws hold"</li>
+        <li>🤖🤖🤖 — 10× bet — "Beep boop"</li>
+        <li>🔥🔥🔥 — 8× bet — "GPU go brrr"</li>
+        <li>📎📎📎 — 5× bet — "Paperclip maximized"</li>
+        <li>Any two matching — 2× bet — "Partial credit"</li>
+      </ul>
+    </details>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

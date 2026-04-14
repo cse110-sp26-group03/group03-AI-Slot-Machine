@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slot Machine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <h1 class="title">AI Token Slots</h1>
+    <p class="subtitle">Feed the machine. Win imaginary tokens. Just like real AI.</p>
+
+    <div class="token-display">
+      <span class="token-label">Tokens:</span>
+      <span id="token-count">100</span>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <div class="bet-controls">
+      <button id="bet-down" class="bet-btn" aria-label="Decrease bet">-</button>
+      <span class="bet-display">Bet: <span id="bet-amount">10</span></span>
+      <button id="bet-up" class="bet-btn" aria-label="Increase bet">+</button>
+    </div>
+
+    <button id="spin-btn" class="spin-btn">SPIN</button>
+
+    <div class="paytable">
+      <h2>Payouts</h2>
+      <ul>
+        <li><span>&#129302;&#129302;&#129302;</span> 3 Robots &mdash; 10x</li>
+        <li><span>&#128640;&#128640;&#128640;</span> 3 Rockets &mdash; 8x</li>
+        <li><span>&#9889;&#9889;&#9889;</span> 3 Bolts &mdash; 6x</li>
+        <li><span>&#128170;&#128170;&#128170;</span> 3 Flex &mdash; 5x</li>
+        <li><span>&#128065;&#128065;&#128065;</span> 3 Eyes &mdash; 4x</li>
+        <li><span>&#128163;&#128163;&#128163;</span> 3 Bombs &mdash; 3x</li>
+        <li><span>Any pair</span> &mdash; 1.5x</li>
+      </ul>
+    </div>
+
+    <div class="history">
+      <h2>Spin Log</h2>
+      <ul id="history-list"></ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

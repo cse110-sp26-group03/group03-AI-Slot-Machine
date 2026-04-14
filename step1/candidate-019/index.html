@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Slop Machine — Burn Tokens, Win Hallucinations</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <header>
+    <h1>🤖 AI SLOP MACHINE 🎰</h1>
+    <p class="tagline">Where your tokens go to die. Powered by GPT-∞.</p>
+  </header>
+
+  <main>
+    <div class="stats">
+      <div class="stat">
+        <span class="label">Tokens</span>
+        <span id="tokens" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Bet</span>
+        <span id="bet" class="value">10</span>
+      </div>
+      <div class="stat">
+        <span class="label">Hallucinations</span>
+        <span id="hallucinations" class="value">0</span>
+      </div>
+    </div>
+
+    <div class="machine">
+      <div class="reels">
+        <div class="reel" id="reel-0"><div class="strip"></div></div>
+        <div class="reel" id="reel-1"><div class="strip"></div></div>
+        <div class="reel" id="reel-2"><div class="strip"></div></div>
+      </div>
+      <div class="lever" id="lever" title="Pull to prompt">
+        <div class="lever-ball"></div>
+        <div class="lever-stick"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="bet-down">− Bet</button>
+      <button id="spin" class="spin">PROMPT ($<span id="bet-cost">10</span>)</button>
+      <button id="bet-up">+ Bet</button>
+      <button id="beg">🙏 Beg OpenAI for more tokens</button>
+    </div>
+
+    <div id="message" class="message">Insert tokens. Pray to the model.</div>
+
+    <div class="paytable">
+      <h3>Payout Table (approximate, may hallucinate)</h3>
+      <ul id="paytable"></ul>
+    </div>
+  </main>
+
+  <footer>
+    <p>No actual intelligence was used in the making of this machine.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

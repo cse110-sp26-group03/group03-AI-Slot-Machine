@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hallucination Casino 🎰</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="casino">
+    <header>
+      <h1>🎰 Hallucination Casino</h1>
+      <p class="tagline">Where your tokens go to die (confidently).</p>
+    </header>
+
+    <div class="balance-bar">
+      <div class="balance">
+        <span class="label">Token Balance</span>
+        <span id="balance">1000</span>
+      </div>
+      <div class="balance">
+        <span class="label">Context Window</span>
+        <span id="context">100%</span>
+      </div>
+    </div>
+
+    <div class="machine">
+      <div class="reels">
+        <div class="reel" id="reel0"><div class="symbol">🤖</div></div>
+        <div class="reel" id="reel1"><div class="symbol">🧠</div></div>
+        <div class="reel" id="reel2"><div class="symbol">💾</div></div>
+      </div>
+
+      <div class="controls">
+        <label>
+          Bet:
+          <input type="number" id="bet" value="50" min="10" step="10"/>
+          tokens
+        </label>
+        <button id="spin">SPIN & PRAY</button>
+      </div>
+    </div>
+
+    <div id="message" class="message">Insert tokens. Receive slop.</div>
+
+    <div class="log">
+      <h3>Prompt History (Ephemeral)</h3>
+      <ul id="log"></ul>
+    </div>
+
+    <footer>
+      <p>* Outputs may contain hallucinations, off-by-one errors, and unsolicited apologies.</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

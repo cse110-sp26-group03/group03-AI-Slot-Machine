@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Token Slots</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <div class="machine">
+    <div class="marquee">
+      <span>** AI TOKEN SLOTS ** HALLUCINATE YOUR WAY TO RICHES ** CONTEXT WINDOW JACKPOT **</span>
+    </div>
+
+    <h1 class="title">
+      <span class="blink">&#x1F916;</span> AI TOKEN SLOTS <span class="blink">&#x1F916;</span>
+    </h1>
+    <p class="subtitle">Burn tokens. Lose context. Win big(?)</p>
+
+    <div class="token-display">
+      <div class="token-box">
+        <div class="token-label">YOUR TOKENS</div>
+        <div class="token-count" id="tokenCount">1000</div>
+      </div>
+      <div class="token-box cost-box">
+        <div class="token-label">COST PER SPIN</div>
+        <div class="token-count" id="spinCost">10</div>
+      </div>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-wrapper">
+        <div class="reel" id="reel0">
+          <div class="reel-inner" id="inner0"></div>
+        </div>
+      </div>
+      <div class="reel-wrapper">
+        <div class="reel" id="reel1">
+          <div class="reel-inner" id="inner1"></div>
+        </div>
+      </div>
+      <div class="reel-wrapper">
+        <div class="reel" id="reel2">
+          <div class="reel-inner" id="inner2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win-line"></div>
+
+    <div id="message" class="message"></div>
+
+    <button class="spin-btn" id="spinBtn" onclick="spin()">
+      SPIN (costs <span id="btnCost">10</span> tokens)
+    </button>
+
+    <div class="payout-table">
+      <div class="payout-title">PAYOUT TABLE</div>
+      <div class="payout-row"><span>🤖🤖🤖</span><span>JACKPOT! +500 tokens</span></div>
+      <div class="payout-row"><span>💀💀💀</span><span>HALLUCINATION! +300 tokens</span></div>
+      <div class="payout-row"><span>🧠🧠🧠</span><span>BIG BRAIN! +200 tokens</span></div>
+      <div class="payout-row"><span>📎📎📎</span><span>CLIPPY! +150 tokens</span></div>
+      <div class="payout-row"><span>🔥🔥🔥</span><span>GPU MELTDOWN! +100 tokens</span></div>
+      <div class="payout-row"><span>Any two match</span><span>+25 tokens</span></div>
+      <div class="payout-row lose-row"><span>No match</span><span>Tokens burned</span></div>
+    </div>
+
+    <button class="reset-btn" onclick="resetGame()">INSERT COINS (Reset)</button>
+  </div>
+
+  <div id="jackpotOverlay" class="jackpot-overlay hidden">
+    <div class="jackpot-text">
+      <div class="jackpot-title">JACKPOT!</div>
+      <div class="jackpot-sub" id="jackpotMessage"></div>
+      <button onclick="dismissJackpot()">COLLECT TOKENS</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

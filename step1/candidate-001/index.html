@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SlopMachine 9000 — The AI Slot Experience</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="machine">
+    <header class="topbar">
+      <h1>🎰 SlopMachine 9000</h1>
+      <p class="tagline">Burn tokens. Hallucinate jackpots. Achieve AGI* <span class="asterisk">(*Artificial General Insolvency)</span></p>
+    </header>
+
+    <section class="stats">
+      <div class="stat balance">
+        <span class="label">🪙 Tokens</span>
+        <span id="balance" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">🔥 Burned</span>
+        <span id="burned" class="value">0</span>
+      </div>
+      <div class="stat">
+        <span class="label">📈 Net</span>
+        <span id="net" class="value">0</span>
+      </div>
+      <div class="stat">
+        <span class="label">🎲 Spins</span>
+        <span id="spins" class="value">0</span>
+      </div>
+    </section>
+
+    <section class="reels-frame">
+      <div class="reels" id="reels">
+        <div class="reel" data-reel="0"><div class="strip"></div></div>
+        <div class="reel" data-reel="1"><div class="strip"></div></div>
+        <div class="reel" data-reel="2"><div class="strip"></div></div>
+      </div>
+      <div class="payline"></div>
+    </section>
+
+    <section class="status">
+      <p id="statusText">Insert tokens. Pray to the loss function.</p>
+    </section>
+
+    <section class="controls">
+      <div class="bet">
+        <button id="betDown" class="round" title="Decrease bet">−</button>
+        <div class="bet-display">
+          <span class="label">Bet</span>
+          <span id="bet" class="value">10</span>
+        </div>
+        <button id="betUp" class="round" title="Increase bet">+</button>
+      </div>
+      <button id="spinBtn" class="spin">SPIN<br /><small>(burn tokens)</small></button>
+      <button id="resetBtn" class="reset">Beg for VC funding</button>
+    </section>
+
+    <section class="paytable">
+      <h2>Paytable <small>(probability of payout: vibes-based)</small></h2>
+      <ul id="paytable"></ul>
+    </section>
+
+    <footer>
+      <p>No GPUs were harmed. No alignment was achieved. No refunds.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
