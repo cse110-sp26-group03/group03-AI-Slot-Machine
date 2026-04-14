@@ -1,0 +1,164 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Courier New', monospace;
+  background: radial-gradient(circle at center, #1a0033 0%, #000 100%);
+  color: #0ff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.machine {
+  background: linear-gradient(145deg, #2a1050, #0a0020);
+  border: 3px solid #ff00ff;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 40px #ff00ff66, inset 0 0 30px #00ffff22;
+}
+
+header { text-align: center; margin-bottom: 20px; }
+
+h1 {
+  font-size: 1.8em;
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+  letter-spacing: 2px;
+}
+
+.tagline {
+  color: #888;
+  font-style: italic;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  background: #000;
+  border: 1px solid #0ff;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.stat { text-align: center; }
+.stat .label {
+  display: block;
+  font-size: 0.7em;
+  color: #888;
+  text-transform: uppercase;
+}
+.stat span:last-child {
+  font-size: 1.4em;
+  color: #0ff;
+  font-weight: bold;
+  text-shadow: 0 0 8px #0ff;
+}
+
+.reels {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  background: #000;
+  border: 3px inset #ff00ff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.reel {
+  flex: 1;
+  height: 100px;
+  background: #111;
+  border: 2px solid #330066;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.strip {
+  font-size: 4em;
+  text-align: center;
+  line-height: 100px;
+  transition: transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.reel.spinning .strip {
+  animation: spin 0.1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+button {
+  flex: 1;
+  padding: 15px;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: bold;
+  background: linear-gradient(145deg, #ff00ff, #990099);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px #ff00ff44;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px #ff00ff88;
+}
+
+button:active:not(:disabled) { transform: translateY(1px); }
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#betDown, #betUp { flex: 0 0 50px; font-size: 1.5em; }
+
+#spin { flex: 1; }
+
+.message {
+  text-align: center;
+  padding: 12px;
+  background: #000;
+  border: 1px dashed #0ff;
+  border-radius: 8px;
+  min-height: 50px;
+  color: #0ff;
+  font-size: 0.9em;
+}
+
+.message.win { color: #0f0; border-color: #0f0; text-shadow: 0 0 10px #0f0; }
+.message.lose { color: #f44; border-color: #f44; }
+
+footer {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.7em;
+  color: #555;
+}
+
+@keyframes jackpot {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.machine.jackpot { animation: jackpot 0.5s ease-in-out 3; }

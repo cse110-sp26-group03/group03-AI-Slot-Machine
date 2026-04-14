@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Token Slots — Burn Compute, Win Tokens</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header>
+      <h1>🤖 AI Token Slots 🎰</h1>
+      <p class="tagline">Feed the model. Pray to the weights.</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="label">Token Balance</span>
+        <span id="balance" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Context Burned</span>
+        <span id="burned" class="value">0</span>
+      </div>
+    </div>
+
+    <div class="reels">
+      <div class="reel" id="reel0"><div class="strip"></div></div>
+      <div class="reel" id="reel1"><div class="strip"></div></div>
+      <div class="reel" id="reel2"><div class="strip"></div></div>
+    </div>
+
+    <div class="controls">
+      <label>Bet:
+        <select id="bet">
+          <option value="10">10 tokens</option>
+          <option value="50" selected>50 tokens</option>
+          <option value="100">100 tokens</option>
+          <option value="500">500 tokens (YOLO)</option>
+        </select>
+      </label>
+      <button id="spin">SPIN (consume GPU)</button>
+      <button id="bailout">Beg for VC Funding</button>
+    </div>
+
+    <div class="message" id="message">Align your bet and pray for emergent behavior.</div>
+
+    <details class="paytable">
+      <summary>Paytable (the model's vibes)</summary>
+      <ul>
+        <li>🧠🧠🧠 AGI Achieved — ×50</li>
+        <li>💸💸💸 Series F Funding — ×25</li>
+        <li>🤖🤖🤖 Three Bots Agree — ×15</li>
+        <li>📄📄📄 Paper Accepted — ×10</li>
+        <li>🔥🔥🔥 Datacenter Fire — ×8</li>
+        <li>🍓🍓🍓 Strawberry — ×5</li>
+        <li>Any two matching — ×2</li>
+        <li>💀💀💀 Hallucination — you pay 2× bet extra</li>
+      </ul>
+    </details>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
