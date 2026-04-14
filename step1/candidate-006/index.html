@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Slot Machine — Burn Tokens, Win Hallucinations</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">◉</span>
+      <h1>HALLUCINA-SLOTS<span class="tm">™</span></h1>
+    </div>
+    <div class="tagline">Now with <s>AGI</s> <em>A Genuine Illusion</em>.</div>
+  </header>
+
+  <main class="machine">
+    <div class="display">
+      <div class="meter">
+        <span class="meter-label">TOKEN BALANCE</span>
+        <span class="meter-value" id="balance">1000</span>
+      </div>
+      <div class="meter">
+        <span class="meter-label">BET</span>
+        <span class="meter-value" id="bet">10</span>
+      </div>
+      <div class="meter">
+        <span class="meter-label">CONFIDENCE</span>
+        <span class="meter-value" id="confidence">99.9%</span>
+      </div>
+    </div>
+
+    <div class="reels" id="reels">
+      <div class="reel" data-reel="0"><div class="strip"></div></div>
+      <div class="reel" data-reel="1"><div class="strip"></div></div>
+      <div class="reel" data-reel="2"><div class="strip"></div></div>
+      <div class="payline"></div>
+    </div>
+
+    <div class="controls">
+      <div class="bet-controls">
+        <button class="btn small" id="betDown">−</button>
+        <span class="btn-label">BET</span>
+        <button class="btn small" id="betUp">+</button>
+      </div>
+      <button class="btn spin" id="spin">SPIN&nbsp;&amp;&nbsp;PRAY</button>
+      <button class="btn secondary" id="maxBet">MAX BET</button>
+    </div>
+
+    <div class="marquee" id="marquee">
+      <span>Insert tokens to generate profit. Side effects may include: empty wallets, existential dread, and confidently wrong answers.</span>
+    </div>
+  </main>
+
+  <section class="paytable">
+    <h2>PAYTABLE</h2>
+    <ul id="paytable"></ul>
+    <p class="fineprint">
+      * Odds computed by a proprietary LLM. It is 99.9% confident and 100% guessing.
+      No refunds. No shareholders. No shame.
+    </p>
+  </section>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

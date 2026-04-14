@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hallucin-o-Matic 3000 — The AI Slot Machine</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+  <main class="cabinet">
+    <header class="marquee">
+      <h1>HALLUCIN-O-MATIC 3000</h1>
+      <p class="tagline">Now with 47% more confidently wrong answers</p>
+    </header>
+
+    <section class="hud">
+      <div class="stat">
+        <span class="label">TOKENS</span>
+        <span id="tokens" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">BET</span>
+        <button id="betDown" class="bet-btn">-</button>
+        <span id="bet" class="value">10</span>
+        <button id="betUp" class="bet-btn">+</button>
+      </div>
+      <div class="stat">
+        <span class="label">HALLUCINATIONS</span>
+        <span id="hallucinations" class="value">0</span>
+      </div>
+    </section>
+
+    <section class="reels" id="reels">
+      <div class="reel"><div class="strip" data-reel="0"></div></div>
+      <div class="reel"><div class="strip" data-reel="1"></div></div>
+      <div class="reel"><div class="strip" data-reel="2"></div></div>
+    </section>
+
+    <section class="controls">
+      <button id="spin" class="spin-btn">SPIN</button>
+      <button id="refill" class="refill-btn" hidden>BEG FOR MORE TOKENS</button>
+    </section>
+
+    <section class="log">
+      <div class="log-header">MODEL OUTPUT</div>
+      <div id="log" class="log-body">
+        <p>&gt; Booting Hallucin-o-Matic 3000...</p>
+        <p>&gt; Loading 4.2 trillion parameters of pure vibes.</p>
+        <p>&gt; Ready. Please insert tokens. Also your soul.</p>
+      </div>
+    </section>
+
+    <footer class="disclaimer">
+      <p>* Hallucin-o-Matic may confidently produce incorrect jackpots. Consult a statistician. Not financial advice. Not any advice. Definitely not therapy.</p>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

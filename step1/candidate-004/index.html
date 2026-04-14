@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hallucination Jackpot — The AI Token Slot Machine</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="terminal">
+  <header class="title-bar">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <div class="title">~/hallucination-jackpot $ ./play.sh</div>
+    <div class="api-status">api: <span class="online">● online</span></div>
+  </header>
+
+  <main class="machine">
+    <section class="marquee">
+      <h1>HALLUCINATION JACKPOT</h1>
+      <p class="tagline">spend tokens. win tokens. achieve nothing. feel alive.</p>
+    </section>
+
+    <section class="dashboard">
+      <div class="stat">
+        <span class="label">balance</span>
+        <span class="value" id="balance">1000</span>
+        <span class="unit">tok</span>
+      </div>
+      <div class="stat">
+        <span class="label">cost / spin</span>
+        <span class="value" id="cost">50</span>
+        <span class="unit">tok</span>
+      </div>
+      <div class="stat">
+        <span class="label">temperature</span>
+        <span class="value" id="temp">0.7</span>
+      </div>
+      <div class="stat">
+        <span class="label">spins</span>
+        <span class="value" id="spins">0</span>
+      </div>
+    </section>
+
+    <section class="reels" id="reels">
+      <div class="reel" data-reel="0"><div class="strip"></div></div>
+      <div class="reel" data-reel="1"><div class="strip"></div></div>
+      <div class="reel" data-reel="2"><div class="strip"></div></div>
+      <div class="payline"></div>
+    </section>
+
+    <section class="log" id="log" aria-live="polite">
+      <div class="log-line system">&gt; session initialized. priors loaded. hubris set to max.</div>
+    </section>
+
+    <section class="controls">
+      <label class="bet">
+        <span>bet</span>
+        <input type="range" id="bet" min="10" max="500" step="10" value="50">
+        <span id="betValue">50</span> tok
+      </label>
+      <button id="spin" class="spin-btn">
+        <span class="spin-label">SPIN</span>
+        <span class="spin-sub">(burn tokens)</span>
+      </button>
+      <button id="topup" class="topup-btn" title="simulate a VC wire transfer">+ raise seed round</button>
+    </section>
+
+    <section class="paytable">
+      <h2>pay table <span class="sub">// hallucinated odds</span></h2>
+      <ul>
+        <li><span class="combo">🧠 🧠 🧠</span><span>AGI achieved — 100×</span></li>
+        <li><span class="combo">🤖 🤖 🤖</span><span>agent swarm — 25×</span></li>
+        <li><span class="combo">📄 📄 📄</span><span>context window overflow — 15×</span></li>
+        <li><span class="combo">💾 💾 💾</span><span>GPU cluster — 10×</span></li>
+        <li><span class="combo">🔥 🔥 🔥</span><span>training run — 6×</span></li>
+        <li><span class="combo">🪙 🪙 🪙</span><span>token refund — 4×</span></li>
+        <li><span class="combo">? ? ?</span><span>any two matching — 1.5×</span></li>
+        <li class="bad"><span class="combo">💥 anywhere</span><span>rate limit — lose bet + 10%</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="status-bar">
+    <span id="sessionCost">net: 0 tok</span>
+    <span>gpt-slot-v0.1 · unaligned · do not cite</span>
+    <span id="fpsDummy">throughput: 42 toks/s</span>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stochastic Parrot Slots</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <div class="logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">STOCHASTIC PARROT SLOTS</span>
+      <span class="logo-bracket">]</span>
+    </div>
+    <div class="subtitle">v4.20 — now with <s>reasoning</s> <em>vibes</em></div>
+  </header>
+
+  <main class="machine">
+    <section class="hud">
+      <div class="hud-card">
+        <div class="hud-label">TOKEN BALANCE</div>
+        <div class="hud-value" id="balance">1000</div>
+      </div>
+      <div class="hud-card">
+        <div class="hud-label">COST / PROMPT</div>
+        <div class="hud-value" id="cost">10</div>
+      </div>
+      <div class="hud-card">
+        <div class="hud-label">JACKPOT (AGI)</div>
+        <div class="hud-value jackpot" id="jackpot">1337</div>
+      </div>
+      <div class="hud-card">
+        <div class="hud-label">TEMPERATURE</div>
+        <div class="hud-value">
+          <input type="range" id="temperature" min="0" max="2" step="0.1" value="1" />
+          <span id="tempVal">1.0</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="reels" id="reels">
+      <div class="reel" data-reel="0"><div class="strip"></div></div>
+      <div class="reel" data-reel="1"><div class="strip"></div></div>
+      <div class="reel" data-reel="2"><div class="strip"></div></div>
+      <div class="payline"></div>
+    </section>
+
+    <section class="controls">
+      <div class="bet-row">
+        <button class="bet-btn" id="betDown">−</button>
+        <div class="bet-display">
+          <div class="bet-label">BET</div>
+          <div class="bet-value" id="bet">10</div>
+        </div>
+        <button class="bet-btn" id="betUp">+</button>
+        <button class="bet-btn max" id="betMax">MAX</button>
+      </div>
+      <button id="spin" class="spin-btn">
+        <span class="spin-label">PROMPT</span>
+        <span class="spin-sub">(spin)</span>
+      </button>
+      <button id="beg" class="beg-btn" hidden>BEG VC FOR MORE TOKENS</button>
+    </section>
+
+    <section class="console">
+      <div class="console-header">
+        <span class="prompt">&gt;_ context_window.log</span>
+        <button id="clearLog" class="tiny">clear</button>
+      </div>
+      <ul id="log" class="log"></ul>
+    </section>
+  </main>
+
+  <aside class="paytable">
+    <h2>PAYTABLE <span class="muted">// inference rules</span></h2>
+    <table>
+      <thead>
+        <tr><th>Combo</th><th>Payout</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="sym">🧠🧠🧠</span></td><td>×50</td><td>Emergent behavior</td></tr>
+        <tr><td><span class="sym">🔥🔥🔥</span></td><td>×25</td><td>GPU goes brrr</td></tr>
+        <tr><td><span class="sym">💾💾💾</span></td><td>×20</td><td>Scraped the whole internet</td></tr>
+        <tr><td><span class="sym">🤖🤖🤖</span></td><td>×15</td><td>Helpful, harmless, honest</td></tr>
+        <tr><td><span class="sym">🪄🪄🪄</span></td><td>×10</td><td>Prompt engineered</td></tr>
+        <tr><td><span class="sym">💸💸💸</span></td><td>×8</td><td>Burn rate achieved</td></tr>
+        <tr><td>any 3 match</td><td>×5</td><td>stochastic luck</td></tr>
+        <tr><td>any 2 match</td><td>×1</td><td>partial credit</td></tr>
+        <tr><td><span class="sym">⚠️</span> anywhere</td><td>−½ bet</td><td>alignment penalty</td></tr>
+      </tbody>
+    </table>
+    <p class="fineprint">
+      * Outputs may be incorrect, biased, or entirely fabricated.
+      By spinning you agree to have your losses used for training.
+    </p>
+  </aside>
+
+  <footer class="footer">
+    <span>no neurons were harmed — just your wallet</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
