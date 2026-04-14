@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| Run ID | |
-| Timestamp | |
-| Model + version string | |
-| Input tokens | |
-| Output tokens | |
-| Total tokens | |
-| Wall-clock time (s) | |
-| Tool-reported time (s) | |
-| Files produced (count and names) | |
-| Lines of code | |
-| Runs in browser? | |
+| Run ID | canidate-026 |
+| Timestamp | 2026-04-13 |
+| Model + version string | Opus 4.6 |
+| Input tokens | 41 |
+| Output tokens | 53.2k |
+| Total tokens | 53.5k |
+| Wall-clock time (s) | 2:15.25 |
+| Tool-reported time (s) | 2m 12s |
+| Files produced (count and names) | 1 file: index.md|
+| Lines of code | 905 |
+| Runs in browser? | Yes|
