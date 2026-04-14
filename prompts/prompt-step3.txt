@@ -1,0 +1,11 @@
+Create a single-page slot machine web app using only vanilla HTML, CSS, and JavaScript in three separate files. The theme satirizes AI hype — players win and spend "tokens."
+
+Visual design: Retro CRT terminal aesthetic with monospace fonts, neon green on dark, scanline overlay, subtle screen flicker, and ASCII art title. Style buttons like terminal commands (e.g., "model.generate()" for spin).
+
+Slot reels: 3 reels with AI-themed emoji symbols, each with weighted probabilities and unique payout multipliers. Animate reels using requestAnimationFrame with a mechanical stepping motion, staggered stop times, and a CSS bounce on landing. Support triple matches (full payout) and pair matches (1/3 payout).
+
+Audio: Web Audio API sound effects with attack/release envelopes for tick, land, win, lose, and bankrupt tones. Include a mute toggle.
+
+Game features: Adjustable bet with preset steps up to 500 plus an all-in button. Temperature display using 10 discrete colored blocks (green to red) rising with consecutive spins. Spin history (last 10). Stats: total spins, win rate, peak balance, total wagered, biggest hit. Particle burst on wins. Bankrupt overlay with snarky AI message and restart. Toggleable paytable with symbols, multipliers, and humorous AI descriptions.
+
+Use descriptive variable names and section comments throughout for readability.
