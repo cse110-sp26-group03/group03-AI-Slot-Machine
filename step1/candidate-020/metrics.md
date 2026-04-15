@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Run ID | candidate-020 |
-| Timestamp | 2026-04-13 |
+| Timestamp | 2026-04-13 19:33:00 |
 | Model + version string | claude-opus-4-6 |
 | Input tokens | 70 |
 | Output tokens | 8.6k |
