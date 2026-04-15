@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine — Token Burner 9000</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- CRT scan-line overlay -->
+  <div class="scanlines"></div>
+
+  <div class="container">
+    <!-- ASCII Art Title -->
+    <pre class="ascii-title" aria-label="Token Burner 9000">
+ _____ ___  _  _____ _  _   ___  _   _ ___  _  _ ___ ___
+|_   _/ _ \| |/ / __| \| | | _ )| | | | _ \| \| | __| _ \
+  | || (_) | ' &lt;| _|| .` | | _ \| |_| |   /| .` | _||   /
+  |_| \___/|_|\_\___|_|\_| |___/ \___/|_|_\|_|\_|___|_|_\
+                    ___  ___   ___   ___
+                   / _ \/ _ \ / _ \ / _ \
+                  | (_) | () | () | () |
+                   \__\_\\___/ \___/ \___/
+    </pre>
+    <p class="subtitle">[ feeding tokens to the void since 2024 ]</p>
+
+    <!-- Temperature Display -->
+    <div class="temperature-bar">
+      <span class="temp-label">model.temperature:</span>
+      <div class="temp-track">
+        <div class="temp-fill" id="tempFill"></div>
+      </div>
+      <span class="temp-value" id="tempValue">0.00</span>
+    </div>
+
+    <!-- Balance Display -->
+    <div class="balance-display">
+      <span class="balance-label">balance:</span>
+      <span class="balance-amount" id="balanceDisplay">1000</span>
+      <span class="token-unit">tokens</span>
+    </div>
+
+    <!-- Slot Machine Reels -->
+    <div class="reels-frame">
+      <div class="reel-container">
+        <div class="reel" id="reel0">
+          <div class="reel-window">
+            <div class="reel-strip" id="strip0"></div>
+          </div>
+        </div>
+        <div class="reel" id="reel1">
+          <div class="reel-window">
+            <div class="reel-strip" id="strip1"></div>
+          </div>
+        </div>
+        <div class="reel" id="reel2">
+          <div class="reel-window">
+            <div class="reel-strip" id="strip2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bet Controls -->
+    <div class="controls">
+      <div class="bet-controls">
+        <span class="bet-label">bet_amount =</span>
+        <button class="btn btn-small" id="betDown" aria-label="Decrease bet">-</button>
+        <span class="bet-amount" id="betDisplay">10</span>
+        <button class="btn btn-small" id="betUp" aria-label="Increase bet">+</button>
+      </div>
+      <button class="btn btn-spin" id="spinBtn">model.generate()</button>
+      <button class="btn btn-mute" id="muteBtn" aria-label="Toggle sound">SOUND: ON</button>
+    </div>
+
+    <!-- Win Message -->
+    <div class="win-message" id="winMessage"></div>
+
+    <!-- Stats Panel -->
+    <div class="stats-panel">
+      <div class="stat">
+        <span class="stat-label">total_spins:</span>
+        <span class="stat-value" id="statSpins">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">win_rate:</span>
+        <span class="stat-value" id="statWinRate">0.0%</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">peak_balance:</span>
+        <span class="stat-value" id="statPeak">1000</span>
+      </div>
+    </div>
+
+    <!-- Spin History -->
+    <div class="history-panel">
+      <div class="history-header">&gt; console.log(spin_history) <button class="btn btn-tiny" id="paytableToggle">// show paytable</button></div>
+      <div class="history-log" id="historyLog">
+        <div class="history-entry dim">[ awaiting inference... ]</div>
+      </div>
+    </div>
+
+    <!-- Paytable -->
+    <div class="paytable" id="paytable">
+      <div class="paytable-header"># PAYTABLE — symbol weights & payouts</div>
+      <div class="paytable-body" id="paytableBody"></div>
+      <div class="paytable-note">* pair match pays 20% of triple payout</div>
+    </div>
+  </div>
+
+  <!-- Particle Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Bankrupt Overlay -->
+  <div class="bankrupt-overlay" id="bankruptOverlay">
+    <div class="bankrupt-box">
+      <pre class="bankrupt-art">
+  ___  _   _ _____    ___  ___
+ / _ \| | | |_   _|  / _ \| __|
+| (_) | |_| | | |   | (_) | _|
+ \___/ \___/  |_|    \___/|_|
+ _____ ___  _  _____ _  _ ___
+|_   _/ _ \| |/ / __| \| / __|
+  | || (_) | ' &lt;| _|| .` \__ \
+  |_| \___/|_|\_\___|_|\_|___/
+      </pre>
+      <p class="bankrupt-message" id="bankruptMessage"></p>
+      <button class="btn btn-restart" id="restartBtn">sudo restart --tokens=1000</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
