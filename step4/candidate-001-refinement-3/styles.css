@@ -1,0 +1,601 @@
+/* ==================== ROOT VARIABLES ==================== */
+:root {
+  --neon-green: #00ff41;
+  --dim-green: #00aa2a;
+  --dark-green: #003b00;
+  --bg-dark: #0a0a0a;
+  --bg-panel: #0d1a0d;
+  --border-green: #00ff4133;
+  --text-dim: #00cc33;
+  --win-gold: #ffd700;
+  --lose-red: #ff3333;
+  --font-mono: 'Courier New', 'Lucida Console', monospace;
+}
+
+/* ==================== RESET & BASE ==================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--bg-dark);
+  color: var(--neon-green);
+  min-height: 100vh;
+  overflow-x: hidden;
+  animation: flicker 0.15s infinite alternate;
+}
+
+/* ==================== CRT FLICKER EFFECT ==================== */
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  100% { opacity: 1; }
+}
+
+/* ==================== SCANLINE OVERLAY ==================== */
+.scanline-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+/* ==================== MAIN CONTAINER ==================== */
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+  position: relative;
+}
+
+/* ==================== ASCII ART TITLE ==================== */
+.ascii-title {
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--dark-green);
+  margin-bottom: 20px;
+  white-space: pre;
+  overflow: hidden;
+}
+
+/* ==================== MUTE BUTTON ==================== */
+.mute-btn {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: transparent;
+  color: var(--dim-green);
+  border: 1px solid var(--border-green);
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.mute-btn:hover {
+  color: var(--neon-green);
+  border-color: var(--neon-green);
+}
+
+/* ==================== BALANCE DISPLAY ==================== */
+.balance-display {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px var(--neon-green);
+}
+
+.balance-label,
+.balance-currency {
+  color: var(--dim-green);
+  font-size: 14px;
+}
+
+.balance-amount {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--neon-green);
+  margin: 0 6px;
+  transition: color 0.3s;
+}
+
+.balance-amount.win-flash {
+  color: var(--win-gold);
+  text-shadow: 0 0 15px var(--win-gold);
+}
+
+.balance-amount.lose-flash {
+  color: var(--lose-red);
+  text-shadow: 0 0 15px var(--lose-red);
+}
+
+/* ==================== SLOT MACHINE ==================== */
+.slot-machine {
+  background: var(--bg-panel);
+  border: 2px solid var(--border-green);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1), inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.reel-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.reel {
+  background: #050505;
+  border: 2px solid var(--border-green);
+  border-radius: 6px;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+/* Fade masks at top and bottom of reel window */
+.reel::before,
+.reel::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 30px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reel::before {
+  top: 0;
+  background: linear-gradient(to bottom, #050505, transparent);
+}
+
+.reel::after {
+  bottom: 0;
+  background: linear-gradient(to top, #050505, transparent);
+}
+
+.reel-window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.reel-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  transition: none;
+}
+
+.reel-symbol {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+  flex-shrink: 0;
+}
+
+/* Bounce animation when reel lands */
+@keyframes reel-bounce {
+  0% { transform: translateY(-8px); }
+  30% { transform: translateY(4px); }
+  60% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+.reel-strip.landed {
+  animation: reel-bounce 0.35s ease-out;
+}
+
+/* ==================== TEMPERATURE METER ==================== */
+.temperature-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 12px;
+}
+
+.temp-label {
+  color: var(--dim-green);
+  white-space: nowrap;
+}
+
+.temp-bar {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.temp-block {
+  width: 100%;
+  height: 14px;
+  border-radius: 2px;
+  background: #1a1a1a;
+  border: 1px solid #222;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.temp-block.active {
+  box-shadow: 0 0 6px currentColor;
+}
+
+.temp-value {
+  color: var(--dim-green);
+  min-width: 28px;
+  text-align: right;
+}
+
+/* ==================== BET CONTROLS ==================== */
+.bet-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.bet-label {
+  color: var(--dim-green);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.bet-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.bet-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 10px;
+  background: transparent;
+  color: var(--dim-green);
+  border: 1px solid var(--border-green);
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 3px;
+}
+
+.bet-btn:hover {
+  color: var(--neon-green);
+  border-color: var(--neon-green);
+  background: rgba(0, 255, 65, 0.05);
+}
+
+.bet-btn.active {
+  color: var(--bg-dark);
+  background: var(--neon-green);
+  border-color: var(--neon-green);
+  font-weight: bold;
+}
+
+.bet-btn.all-in {
+  color: var(--lose-red);
+  border-color: rgba(255, 51, 51, 0.3);
+}
+
+.bet-btn.all-in:hover {
+  border-color: var(--lose-red);
+  background: rgba(255, 51, 51, 0.1);
+}
+
+.bet-btn.all-in.active {
+  background: var(--lose-red);
+  color: var(--bg-dark);
+  border-color: var(--lose-red);
+}
+
+/* ==================== SPIN BUTTON ==================== */
+.spin-btn {
+  display: block;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: bold;
+  padding: 14px;
+  background: var(--dark-green);
+  color: var(--neon-green);
+  border: 2px solid var(--neon-green);
+  border-radius: 6px;
+  cursor: pointer;
+  text-shadow: 0 0 8px var(--neon-green);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+  transition: all 0.2s;
+  margin-bottom: 16px;
+}
+
+.spin-btn:hover:not(:disabled) {
+  background: rgba(0, 255, 65, 0.15);
+  box-shadow: 0 0 25px rgba(0, 255, 65, 0.4);
+}
+
+.spin-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.spin-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ==================== SPIN HISTORY ==================== */
+.history-section {
+  margin-bottom: 16px;
+}
+
+.history-label {
+  color: var(--dim-green);
+  font-size: 12px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.spin-history {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  min-height: 28px;
+}
+
+.history-entry {
+  font-size: 11px;
+  padding: 3px 7px;
+  border-radius: 3px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.history-entry.win {
+  color: var(--win-gold);
+  border-color: rgba(255, 215, 0, 0.3);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.history-entry.lose {
+  color: var(--lose-red);
+  border-color: rgba(255, 51, 51, 0.2);
+  background: rgba(255, 51, 51, 0.03);
+}
+
+/* ==================== STATS PANEL ==================== */
+.stats-section {
+  margin-bottom: 16px;
+}
+
+.stats-label {
+  color: var(--dim-green);
+  font-size: 12px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 20px;
+  font-size: 12px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-key {
+  color: var(--dim-green);
+}
+
+.stat-val {
+  color: var(--neon-green);
+}
+
+/* ==================== PAYTABLE ==================== */
+.paytable-toggle-btn {
+  display: block;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 8px;
+  background: transparent;
+  color: var(--dim-green);
+  border: 1px dashed var(--border-green);
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.paytable-toggle-btn:hover {
+  color: var(--neon-green);
+  border-color: var(--neon-green);
+}
+
+.paytable {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-green);
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 12px;
+}
+
+.paytable.hidden {
+  display: none;
+}
+
+.paytable-header {
+  text-align: center;
+  color: var(--neon-green);
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.paytable-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.06);
+}
+
+.paytable-row:last-child {
+  border-bottom: none;
+}
+
+.paytable-symbol {
+  font-size: 22px;
+  width: 36px;
+  text-align: center;
+}
+
+.paytable-name {
+  color: var(--dim-green);
+  flex: 1;
+  margin-left: 8px;
+}
+
+.paytable-mult {
+  color: var(--neon-green);
+  font-weight: bold;
+  min-width: 40px;
+  text-align: right;
+}
+
+.paytable-desc {
+  color: #446644;
+  font-size: 10px;
+  margin-left: 8px;
+  flex: 2;
+  text-align: right;
+}
+
+.paytable-footer {
+  margin-top: 8px;
+  color: #446644;
+  font-size: 10px;
+  text-align: center;
+}
+
+.paytable-footer p {
+  margin: 2px 0;
+}
+
+/* ==================== PARTICLE CANVAS ==================== */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ==================== BANKRUPT OVERLAY ==================== */
+.bankrupt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.bankrupt-overlay.hidden {
+  display: none;
+}
+
+.bankrupt-modal {
+  text-align: center;
+  padding: 30px;
+}
+
+.bankrupt-ascii {
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--lose-red);
+  text-shadow: 0 0 10px var(--lose-red);
+  margin-bottom: 20px;
+  white-space: pre;
+}
+
+.bankrupt-message {
+  color: var(--dim-green);
+  font-size: 14px;
+  margin-bottom: 24px;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.restart-btn {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  padding: 12px 24px;
+  background: transparent;
+  color: var(--neon-green);
+  border: 2px solid var(--neon-green);
+  border-radius: 6px;
+  cursor: pointer;
+  text-shadow: 0 0 8px var(--neon-green);
+  transition: all 0.2s;
+}
+
+.restart-btn:hover {
+  background: rgba(0, 255, 65, 0.15);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 500px) {
+  .ascii-title {
+    font-size: 6px;
+  }
+
+  .reel {
+    width: 90px;
+    height: 90px;
+  }
+
+  .reel-symbol {
+    width: 90px;
+    height: 90px;
+    font-size: 42px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
