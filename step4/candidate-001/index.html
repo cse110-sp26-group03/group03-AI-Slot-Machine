@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Sea Token Slots — AI Gone Fishing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ========== JACKPOT FULLSCREEN OVERLAY ========== -->
+  <div id="jackpot-overlay" class="jackpot-overlay hidden">
+    <div class="jackpot-content">
+      <div class="jackpot-fish">🐙</div>
+      <h1 class="jackpot-title">JACKPOT!</h1>
+      <p class="jackpot-subtitle">The AI has achieved sentience... and it's generous!</p>
+      <p id="jackpot-amount" class="jackpot-amount"></p>
+      <div class="jackpot-bubbles" id="jackpot-bubbles"></div>
+      <button id="jackpot-dismiss-btn" class="btn btn-glow">Collect Your Tokens</button>
+    </div>
+  </div>
+
+  <!-- ========== GAME OVER OVERLAY ========== -->
+  <div id="gameover-overlay" class="gameover-overlay hidden">
+    <div class="gameover-content">
+      <div class="gameover-fish">🐡</div>
+      <h1 class="gameover-title">TOKEN BANKRUPTCY</h1>
+      <p class="gameover-subtitle">Your AI ran out of context window... and tokens.</p>
+      <p class="gameover-flavor">"I'm sorry, I can't assist with that. You're broke."</p>
+      <button id="gameover-restart-btn" class="btn btn-restart">Feed the Machine (Restart)</button>
+    </div>
+  </div>
+
+  <!-- ========== MAIN CONTAINER ========== -->
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1 class="title">🐠 Deep Sea Token Slots 🐟</h1>
+      <p class="tagline">"Where hallucinations pay dividends"</p>
+    </header>
+
+    <!-- Token Balance Display -->
+    <div class="balance-bar">
+      <div class="balance-label">TOKEN BALANCE</div>
+      <div id="token-balance" class="balance-amount">1000</div>
+      <div class="balance-flavor">( inference credits remaining )</div>
+    </div>
+
+    <!-- ========== SLOT MACHINE ========== -->
+    <div class="machine-frame">
+      <!-- Decorative bubbles -->
+      <div class="bubble bubble-1"></div>
+      <div class="bubble bubble-2"></div>
+      <div class="bubble bubble-3"></div>
+
+      <!-- 3x3 Reel Grid -->
+      <div class="reel-grid" id="reel-grid">
+        <!-- Row 1 -->
+        <div class="reel-cell" data-row="0" data-col="0"><span class="symbol">🐙</span></div>
+        <div class="reel-cell" data-row="0" data-col="1"><span class="symbol">🦈</span></div>
+        <div class="reel-cell" data-row="0" data-col="2"><span class="symbol">🐡</span></div>
+        <!-- Row 2 -->
+        <div class="reel-cell" data-row="1" data-col="0"><span class="symbol">🪼</span></div>
+        <div class="reel-cell" data-row="1" data-col="1"><span class="symbol">🐠</span></div>
+        <div class="reel-cell" data-row="1" data-col="2"><span class="symbol">🦑</span></div>
+        <!-- Row 3 -->
+        <div class="reel-cell" data-row="2" data-col="0"><span class="symbol">🐟</span></div>
+        <div class="reel-cell" data-row="2" data-col="1"><span class="symbol">🦞</span></div>
+        <div class="reel-cell" data-row="2" data-col="2"><span class="symbol">🐙</span></div>
+      </div>
+
+      <!-- Win message area -->
+      <div id="win-message" class="win-message hidden"></div>
+    </div>
+
+    <!-- ========== CONTROLS ========== -->
+    <div class="controls">
+      <!-- Bet Controls -->
+      <div class="bet-section">
+        <label class="bet-label" for="bet-input">BET (use ↑↓ keys)</label>
+        <div class="bet-adjuster">
+          <button id="bet-down-btn" class="btn btn-small" aria-label="Decrease bet">−</button>
+          <input type="number" id="bet-input" class="bet-input" value="10" min="1" max="1000">
+          <button id="bet-up-btn" class="btn btn-small" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button id="spin-btn" class="btn btn-spin">🌊 SPIN</button>
+        <button id="allin-btn" class="btn btn-allin">🎣 ALL IN</button>
+      </div>
+
+      <!-- Utility Buttons -->
+      <div class="utility-buttons">
+        <button id="mute-btn" class="btn btn-util" aria-label="Toggle sound">🔊 Sound On</button>
+        <button id="restart-btn" class="btn btn-util" aria-label="Restart game">🔄 Restart</button>
+      </div>
+    </div>
+
+    <!-- ========== STATS PANEL ========== -->
+    <div class="stats-panel">
+      <h2 class="panel-title">📊 Model Performance Metrics</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Inferences</div>
+          <div id="stat-total-spins" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Win Rate (Accuracy)</div>
+          <div id="stat-win-rate" class="stat-value">0%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Biggest Hallucination Payout</div>
+          <div id="stat-biggest-win" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Tokens Won</div>
+          <div id="stat-total-won" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Tokens Burned</div>
+          <div id="stat-total-lost" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Net Profit/Loss</div>
+          <div id="stat-net" class="stat-value">0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SPIN HISTORY ========== -->
+    <div class="history-panel">
+      <h2 class="panel-title">📜 Inference Log</h2>
+      <div id="history-list" class="history-list">
+        <p class="history-empty">No inferences yet. Spin to generate outputs!</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>"This model may produce inaccurate payouts. Always verify with a second slot machine."</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
