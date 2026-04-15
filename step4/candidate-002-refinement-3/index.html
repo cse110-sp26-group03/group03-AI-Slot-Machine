@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI SLOT MACHINE // terminal v4.2</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ============================ SCANLINE OVERLAY ============================ -->
+  <div class="scanlines"></div>
+  <div class="flicker"></div>
+
+  <main class="terminal">
+
+    <!-- ============================ ASCII TITLE ============================ -->
+    <pre class="ascii-title">
+  ___   _____    _____ _       _____ _____
+ / _ \ |_   _|  /  ___| |     |  _  |_   _|
+/ /_\ \  | |    \ `--.| |     | | | | | |
+|  _  |  | |     `--. \ |     | | | | | |
+| | | | _| |_   /\__/ / |____ \ \_/ / | |
+\_| |_/ \___/   \____/\_____/  \___/  \_/
+      >> hallucinate. spend. repeat. <<
+    </pre>
+
+    <!-- ============================ TOP STATUS BAR ============================ -->
+    <section class="status-bar">
+      <div class="stat"><span class="label">tokens::</span><span id="balanceDisplay">1000</span></div>
+      <div class="stat"><span class="label">bet::</span><span id="betDisplay">10</span></div>
+      <div class="stat"><span class="label">last::</span><span id="lastResultDisplay">+0</span></div>
+      <button id="muteToggle" class="term-btn tiny">audio.on()</button>
+    </section>
+
+    <!-- ============================ TEMPERATURE METER ============================ -->
+    <section class="temperature-wrapper">
+      <span class="label">temperature::</span>
+      <div id="temperatureMeter" class="temp-meter"></div>
+      <span id="temperatureValue" class="temp-value">0.0</span>
+    </section>
+
+    <!-- ============================ SLOT REELS ============================ -->
+    <section class="reels-container">
+      <div class="reel-frame">
+        <div class="reel" id="reel0"><div class="symbol">?</div></div>
+        <div class="reel" id="reel1"><div class="symbol">?</div></div>
+        <div class="reel" id="reel2"><div class="symbol">?</div></div>
+      </div>
+      <div id="particleLayer" class="particle-layer"></div>
+    </section>
+
+    <!-- ============================ MESSAGE LINE ============================ -->
+    <div id="messageLine" class="message-line">> awaiting input...</div>
+
+    <!-- ============================ BET CONTROLS ============================ -->
+    <section class="bet-controls">
+      <span class="label">bet.set()::</span>
+      <button class="term-btn bet-preset" data-bet="10">10</button>
+      <button class="term-btn bet-preset" data-bet="50">50</button>
+      <button class="term-btn bet-preset" data-bet="100">100</button>
+      <button class="term-btn bet-preset" data-bet="250">250</button>
+      <button class="term-btn bet-preset" data-bet="500">500</button>
+      <button id="allInButton" class="term-btn danger">all_in()</button>
+    </section>
+
+    <!-- ============================ ACTION BUTTONS ============================ -->
+    <section class="action-buttons">
+      <button id="spinButton" class="term-btn primary big">model.generate()</button>
+      <button id="paytableToggle" class="term-btn">paytable.show()</button>
+      <button id="resetButton" class="term-btn">session.reset()</button>
+    </section>
+
+    <!-- ============================ STATS + HISTORY ============================ -->
+    <section class="info-grid">
+      <div class="info-box">
+        <h3>// stats.log</h3>
+        <ul class="stat-list">
+          <li>spins.total:: <span id="statSpins">0</span></li>
+          <li>win.rate:: <span id="statWinRate">0%</span></li>
+          <li>peak.balance:: <span id="statPeak">1000</span></li>
+          <li>total.wagered:: <span id="statWagered">0</span></li>
+          <li>biggest.hit:: <span id="statBiggest">0</span></li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <h3>// history.tail(10)</h3>
+        <ul id="historyList" class="history-list"></ul>
+      </div>
+    </section>
+
+    <!-- ============================ PAYTABLE PANEL ============================ -->
+    <section id="paytablePanel" class="paytable hidden">
+      <h3>// paytable.md</h3>
+      <table>
+        <thead>
+          <tr><th>symbol</th><th>xN</th><th>description</th></tr>
+        </thead>
+        <tbody id="paytableBody"></tbody>
+      </table>
+      <p class="paytable-note">pair match yields 1/3 of triple payout.</p>
+    </section>
+  </main>
+
+  <!-- ============================ BANKRUPT OVERLAY ============================ -->
+  <div id="bankruptOverlay" class="bankrupt-overlay hidden">
+    <div class="bankrupt-box">
+      <pre class="ascii-skull">
+  [ SYSTEM FAULT ]
+  ERR: context_window_overflowed
+  ERR: token_balance == 0x00
+      </pre>
+      <h2 id="bankruptMessage">"Your free trial of capitalism has ended."</h2>
+      <button id="restartButton" class="term-btn primary big">reboot.session()</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

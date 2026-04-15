@@ -1,0 +1,13 @@
+Create a slot machine app using only vanilla HTML, CSS, and JavaScript split across exactly 3 files: index.html, styles.css, and app.js. The theme should make fun of AI — you win and spend tokens. Style it with an aquarium theme using deep sea colors and 
+ocean/fish-inspired AI symbols arranged in a 3x3 grid. Add sound and visual indicators for matching symbols and AI humor throughout. Use clear comments for all methods and sections, and descriptive variable names.
+
+Include these features:
+
+Mute button to toggle sounds
+"All In" button to bet entire token balance
+Failure/game over screen when tokens run out
+Spin history tracker showing past results
+Stats panel showing win rate, total spins, biggest win
+Full screen jackpot animation when hitting the top prize
+Restart button to reset token count and stats
+Keyboard input for adjusting bet amount
