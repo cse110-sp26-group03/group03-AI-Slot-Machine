@@ -1,4 +1,4 @@
-Step 1 Top 5 Candidates:
+## Step 1 Top 5 Candidates:
 
 1. candidate 49 (ran by Ike)
    1. spin history
@@ -11,3 +11,11 @@ Step 1 Top 5 Candidates:
    1. interesting visuals (retro computer style)
 5. candidate 10 (ran by Humza)
    1. blocks out with separate window when run out of tokens. 
+
+## Key Takeaways:
+
+A lot of them were kind of basic, kind of not that great, lots of variance but also very generic.
+
+We ended up picking out those with unique features/designs that we wanted to carry over into the next iteration.
+
+Code was often very poorly commented, some runs made 1 file, others made three, etc.
