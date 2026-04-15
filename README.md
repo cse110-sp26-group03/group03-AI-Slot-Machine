@@ -20,3 +20,6 @@ All 50 baseline runs were executed using the same model and harness with clean s
 [Final Version Here](https://cse110-sp26-group03.github.io/group03-AI-Slot-Machine/step5/candidate-001/)
 
 [Final Report Here](FINAL-REPORT.md)
+
+## Presentation Video + Slides
+[Watch video](./presentation.mp4)
