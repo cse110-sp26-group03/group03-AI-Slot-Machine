@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine - Spend Your Tokens!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="machine-header">
+      <h1>The AI Token Burner</h1>
+      <p class="subtitle">"Your tokens are our tokens"</p>
+    </header>
+
+    <div class="token-display">
+      <span class="token-label">Tokens</span>
+      <span class="token-count" id="token-count">1000</span>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">🤖</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">🧠</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">💸</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bet-controls">
+      <button class="bet-btn" id="bet-down" aria-label="Decrease bet">−</button>
+      <div class="bet-display">
+        <span class="bet-label">Bet</span>
+        <span class="bet-amount" id="bet-amount">10</span>
+      </div>
+      <button class="bet-btn" id="bet-up" aria-label="Increase bet">+</button>
+    </div>
+
+    <button class="spin-btn" id="spin-btn">🎰 SPEND TOKENS 🎰</button>
+
+    <div class="message-box" id="message-box">
+      Feed me your tokens, human.
+    </div>
+
+    <div class="paytable">
+      <h2>Payouts</h2>
+      <div class="paytable-grid">
+        <div class="payout-row">
+          <span>🤖🤖🤖</span>
+          <span>Robot Uprising — 50x</span>
+        </div>
+        <div class="payout-row">
+          <span>🧠🧠🧠</span>
+          <span>Singularity — 30x</span>
+        </div>
+        <div class="payout-row">
+          <span>💸💸💸</span>
+          <span>VC Funding Round — 25x</span>
+        </div>
+        <div class="payout-row">
+          <span>🔥🔥🔥</span>
+          <span>GPU Meltdown — 20x</span>
+        </div>
+        <div class="payout-row">
+          <span>👁️👁️👁️</span>
+          <span>Sentience Achieved — 15x</span>
+        </div>
+        <div class="payout-row">
+          <span>📉📉📉</span>
+          <span>AI Bubble Pop — 10x</span>
+        </div>
+        <div class="payout-row">
+          <span>Any pair</span>
+          <span>Partial Match — 2x</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
