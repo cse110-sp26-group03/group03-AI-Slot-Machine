@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Sea AI Slots — Burn Your Tokens!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ====== BUBBLE BACKGROUND PARTICLES ====== -->
+  <div id="bubble-container" aria-hidden="true"></div>
+
+  <!-- ====== JACKPOT FULLSCREEN OVERLAY ====== -->
+  <div id="jackpot-overlay" class="hidden" aria-live="polite">
+    <div class="jackpot-content">
+      <h1>🐙 MEGA JACKPOT 🐙</h1>
+      <p class="jackpot-amount" id="jackpot-amount"></p>
+      <p class="jackpot-quip">"Congratulations — you've out-hallucinated the AI."</p>
+      <button id="jackpot-dismiss-btn" class="btn btn-glow">Collect Your Tokens</button>
+    </div>
+  </div>
+
+  <!-- ====== GAME OVER OVERLAY ====== -->
+  <div id="gameover-overlay" class="hidden" aria-live="polite">
+    <div class="gameover-content">
+      <h1>💀 OUT OF TOKENS 💀</h1>
+      <p class="gameover-quip">"Your context window has been exhausted. Just like your wallet."</p>
+      <p class="gameover-sub">Total spins before bankruptcy: <span id="gameover-spins">0</span></p>
+      <button id="restart-btn" class="btn btn-restart">Feed the Machine Again</button>
+    </div>
+  </div>
+
+  <!-- ====== MAIN GAME CONTAINER ====== -->
+  <div id="game-container">
+
+    <!-- Header -->
+    <header>
+      <h1 class="title">🌊 DeepSea<span class="ai-text">AI</span>Slots 🐟</h1>
+      <p class="subtitle">"Where your tokens go to drown"</p>
+    </header>
+
+    <!-- Token & Bet Display -->
+    <div class="info-bar">
+      <div class="info-item token-display">
+        <span class="info-label">Tokens</span>
+        <span class="info-value" id="token-count">1000</span>
+      </div>
+      <div class="info-item bet-display">
+        <span class="info-label">Bet</span>
+        <div class="bet-controls">
+          <button class="btn btn-sm" id="bet-down" aria-label="Decrease bet">−</button>
+          <span class="info-value" id="bet-amount">10</span>
+          <button class="btn btn-sm" id="bet-up" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Last Win</span>
+        <span class="info-value" id="last-win">0</span>
+      </div>
+    </div>
+
+    <!-- 3x3 Slot Grid -->
+    <div id="slot-machine">
+      <div class="slot-grid" id="slot-grid">
+        <!-- 9 cells filled by JS -->
+        <div class="slot-cell" data-row="0" data-col="0"><span class="symbol">🐡</span></div>
+        <div class="slot-cell" data-row="0" data-col="1"><span class="symbol">🐡</span></div>
+        <div class="slot-cell" data-row="0" data-col="2"><span class="symbol">🐡</span></div>
+        <div class="slot-cell" data-row="1" data-col="0"><span class="symbol">🐡</span></div>
+        <div class="slot-cell" data-row="1" data-col="1"><span class="symbol">🐡</span></div>
+        <div class="slot-cell" data-row="1" data-col="2"><span class="symbol">🐡</span></div>
+        <div class="slot-cell" data-row="2" data-col="0"><span class="symbol">🐡</span></div>
+        <div class="slot-cell" data-row="2" data-col="1"><span class="symbol">🐡</span></div>
+        <div class="slot-cell" data-row="2" data-col="2"><span class="symbol">🐡</span></div>
+      </div>
+    </div>
+
+    <!-- AI Quip Banner -->
+    <div id="quip-banner" aria-live="polite">
+      <p id="quip-text">"Spinning up the neural nets… please hold your hallucinations."</p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-bar">
+      <button class="btn btn-spin" id="spin-btn">🌀 SPIN</button>
+      <button class="btn btn-allin" id="allin-btn">🐋 ALL IN</button>
+      <button class="btn btn-mute" id="mute-btn" aria-label="Toggle sound">🔊</button>
+    </div>
+
+    <!-- Keyboard hint -->
+    <p class="keyboard-hint">Press <kbd>↑</kbd>/<kbd>↓</kbd> to adjust bet &middot; <kbd>Space</kbd> to spin &middot; <kbd>M</kbd> to mute</p>
+
+    <!-- Stats Panel -->
+    <details class="stats-panel" id="stats-panel">
+      <summary>📊 Stats — How badly are you losing?</summary>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">Total Spins</span>
+          <span class="stat-value" id="stat-total-spins">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Wins</span>
+          <span class="stat-value" id="stat-wins">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Win Rate</span>
+          <span class="stat-value" id="stat-win-rate">0%</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Biggest Win</span>
+          <span class="stat-value" id="stat-biggest-win">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Tokens Won</span>
+          <span class="stat-value" id="stat-tokens-won">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Tokens Lost</span>
+          <span class="stat-value" id="stat-tokens-lost">0</span>
+        </div>
+      </div>
+    </details>
+
+    <!-- Spin History -->
+    <details class="history-panel" id="history-panel">
+      <summary>📜 Spin History — A Log of Regret</summary>
+      <div id="history-list" class="history-list">
+        <p class="history-empty">No spins yet. Your tokens are temporarily safe.</p>
+      </div>
+    </details>
+
+    <!-- Paytable -->
+    <details class="paytable-panel">
+      <summary>💰 Paytable — Know What You're Losing</summary>
+      <div class="paytable" id="paytable">
+        <!-- Filled by JS -->
+      </div>
+    </details>
+
+    <footer>
+      <p>"No actual AI was harmed in the making of this slot machine. Your tokens, however, are another story."</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
