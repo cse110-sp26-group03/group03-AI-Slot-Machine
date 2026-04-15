@@ -23,3 +23,5 @@ All 50 baseline runs were executed using the same model and harness with clean s
 
 ## Presentation Video + Slides
 [Watch video](./presentation.mp4)
+
+[See slides](./slides.pdf)
