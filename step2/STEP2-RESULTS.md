@@ -1,4 +1,4 @@
-Step 2 Top 3 Candidates:
+## Step 2 Top 3 Candidates:
 
 1. candidate002
    1. clean visuals
@@ -20,3 +20,11 @@ Step 2 Top 3 Candidates:
    4. con: would prefer all-in button
    5. con: would prefer more comments
    6. con: short variable names in the code (need more descriptive code, hard to read)
+
+## Key Takeaways 
+
+Started seeing bugs, started noticing some issues with code quality 
+
+Visuals started converging onto the same themes/colors, some artifacts from previous iterations are being carried over. 
+
+Started noticing the limitations of AI development, carries over bad habits from previous runs. 
