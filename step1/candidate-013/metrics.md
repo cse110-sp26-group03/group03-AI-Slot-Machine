@@ -13,3 +13,10 @@
 | Files produced (count and names) | 3 — index.html, styles.css, app.js |
 | Lines of code | 495 (index.html: 63, styles.css: 241, app.js: 191) |
 | Runs in browser? | Yes — open index.html directly, no build step |
+
+## Code
+Code Quality: Clean and well-organized, splits code into separate files properly. Commented decent comments on styles.css
+
+## Functionality
+App Quality: Slot machine works with betting and token balance, AI makes the game so funny.
+
