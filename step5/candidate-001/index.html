@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token Tides - AI Slot Machine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ UNDERWATER BACKGROUND ECOSYSTEM ============ -->
+  <div id="ocean-bg">
+    <!-- Coral reef along the bottom -->
+    <div class="coral coral-1"></div>
+    <div class="coral coral-2"></div>
+    <div class="coral coral-3"></div>
+    <div class="coral coral-4"></div>
+    <div class="coral coral-5"></div>
+    <div class="seaweed seaweed-1"></div>
+    <div class="seaweed seaweed-2"></div>
+    <div class="seaweed seaweed-3"></div>
+    <div class="seaweed seaweed-4"></div>
+    <!-- Bubbles rise from the bottom -->
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
+    <div class="bubble bubble-5"></div>
+    <div class="bubble bubble-6"></div>
+    <div class="bubble bubble-7"></div>
+    <div class="bubble bubble-8"></div>
+    <div class="bubble bubble-9"></div>
+    <div class="bubble bubble-10"></div>
+    <!-- Swimming fish -->
+    <div class="fish fish-1">🐠</div>
+    <div class="fish fish-2">🐡</div>
+    <div class="fish fish-3">🐟</div>
+    <div class="fish fish-4">🦈</div>
+    <div class="fish fish-5">🐠</div>
+    <div class="fish fish-6">🐟</div>
+    <!-- Sea creatures -->
+    <div class="creature jellyfish-1">🪼</div>
+    <div class="creature jellyfish-2">🪼</div>
+    <div class="creature seahorse-1">🦑</div>
+    <div class="creature turtle-1">🐢</div>
+    <div class="creature starfish-1">⭐</div>
+    <div class="creature starfish-2">⭐</div>
+    <!-- Light rays from above -->
+    <div class="light-ray ray-1"></div>
+    <div class="light-ray ray-2"></div>
+    <div class="light-ray ray-3"></div>
+  </div>
+
+  <!-- ============ MAIN GAME CONTAINER ============ -->
+  <div id="game-container">
+
+    <!-- Top bar: balance, mute, restart -->
+    <header id="top-bar">
+      <div id="balance-display">
+        <span class="label">TOKENS</span>
+        <span id="balance-amount">1000</span>
+        <span class="token-icon">🤖</span>
+      </div>
+      <h1 id="game-title">TOKEN TIDES</h1>
+      <div id="top-controls">
+        <button id="mute-btn" title="Toggle Sound">🔊</button>
+        <button id="restart-btn" title="Restart Game">🔄</button>
+      </div>
+    </header>
+
+    <!-- Main content area: stats | reels | history -->
+    <div id="main-area">
+
+      <!-- Stats panel (left) -->
+      <aside id="stats-panel">
+        <h3>📊 Stats</h3>
+        <div class="stat-row">
+          <span class="stat-label">Total Spins</span>
+          <span id="stat-total-spins" class="stat-value">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Wins</span>
+          <span id="stat-wins" class="stat-value">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Win Rate</span>
+          <span id="stat-win-rate" class="stat-value">0%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Biggest Win</span>
+          <span id="stat-biggest-win" class="stat-value">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">AI Mood</span>
+          <span id="stat-ai-mood" class="stat-value">😐</span>
+        </div>
+      </aside>
+
+      <!-- Slot machine (center) -->
+      <div id="slot-machine">
+        <div id="machine-frame">
+          <div id="ai-quip">"I could hallucinate better odds."</div>
+          <!-- 3x3 reel grid -->
+          <div id="reel-grid">
+            <div class="reel-cell" data-row="0" data-col="0"><span class="symbol">🐙</span></div>
+            <div class="reel-cell" data-row="0" data-col="1"><span class="symbol">🦀</span></div>
+            <div class="reel-cell" data-row="0" data-col="2"><span class="symbol">🐡</span></div>
+            <div class="reel-cell" data-row="1" data-col="0"><span class="symbol">🦞</span></div>
+            <div class="reel-cell" data-row="1" data-col="1"><span class="symbol">🐠</span></div>
+            <div class="reel-cell" data-row="1" data-col="2"><span class="symbol">🦈</span></div>
+            <div class="reel-cell" data-row="2" data-col="0"><span class="symbol">🐢</span></div>
+            <div class="reel-cell" data-row="2" data-col="1"><span class="symbol">🐳</span></div>
+            <div class="reel-cell" data-row="2" data-col="2"><span class="symbol">🦑</span></div>
+          </div>
+        </div>
+
+        <!-- Bet controls -->
+        <div id="bet-controls">
+          <button id="bet-down" title="Decrease Bet (←)">◀</button>
+          <div id="bet-display">
+            <span class="label">BET</span>
+            <span id="bet-amount">10</span>
+          </div>
+          <button id="bet-up" title="Increase Bet (→)">▶</button>
+          <button id="all-in-btn">ALL IN 🎰</button>
+          <button id="spin-btn">SPIN</button>
+        </div>
+      </div>
+
+      <!-- Spin history (right) -->
+      <aside id="history-panel">
+        <h3>📜 History</h3>
+        <ul id="history-list">
+          <li class="history-empty">No spins yet...</li>
+        </ul>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ============ WIN OVERLAY ============ -->
+  <div id="win-overlay" class="hidden">
+    <div id="confetti-container"></div>
+    <div id="win-content">
+      <div id="win-title">BIG WIN</div>
+      <div id="win-amount">+0 TOKENS</div>
+      <div id="win-subtitle">"Even GPT couldn't predict this."</div>
+    </div>
+  </div>
+
+  <!-- ============ GAME OVER SCREEN ============ -->
+  <div id="game-over" class="hidden">
+    <div id="game-over-content">
+      <h2>GAME OVER</h2>
+      <p>You've burned through all your tokens.</p>
+      <p class="ai-taunt">"Looks like your prompt engineering skills don't transfer to gambling."</p>
+      <div id="game-over-stats">
+        <span>Total Spins: <strong id="go-spins">0</strong></span>
+        <span>Best Win: <strong id="go-best">0</strong></span>
+      </div>
+      <button id="game-over-restart">Feed the Machine More Tokens 🤖</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
